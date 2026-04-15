@@ -1,0 +1,13 @@
+https://www.boursedirect.fr
+https://www.boursorama.com
+api rest alpha vantage ?
+https://fr.finance.yahoo.com/quote/OR.PA/
+...
+
+
+============
+quelques traductions francais/anglais
+--------
+cotation boursière ; stock market listing
+cotation : quotations / quote
+action : share or stock
