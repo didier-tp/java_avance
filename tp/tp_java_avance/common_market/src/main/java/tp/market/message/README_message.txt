@@ -1,0 +1,1 @@
+structures de messages "réseau" (pour communications de bas niveaux basées sur des sockets)

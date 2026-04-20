@@ -19,6 +19,8 @@
    <modules>
        <module>exos_threads</module>
        <module>market</module>
+       <module>common_market</module>
+       <module>trader</module>
    </modules>
   
   

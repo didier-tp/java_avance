@@ -5,11 +5,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /*
 Stock (action)
  */
 @Getter @Setter @NoArgsConstructor @ToString
-public class Stock {
+public class Stock implements Serializable {
     private String isin ;//code (ex: FR0000120321) (ISIN: (International Securities Identification Number)
     private String name; //ex: L'Oréal S.A
     private String symbol; //ex: OR.PA

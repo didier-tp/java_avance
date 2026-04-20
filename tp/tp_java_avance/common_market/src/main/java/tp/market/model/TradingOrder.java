@@ -5,14 +5,15 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 /*
 Pour des raisons de simplicité , on considera que l'on aura toujours affaire à des ordres à cours limité .
  */
 
-@Getter @Setter @ToString
-public class TradingOrder {
+@Getter @Setter @ToString @NoArgsConstructor
+public class TradingOrder implements Serializable{
     public enum OrderType { SALE , PURCHASE }
     public enum OrderStatus { NEW , PENDING , FILLED , PARTIAL_FILLED , REJECTED  } //...
 
@@ -35,6 +36,7 @@ public class TradingOrder {
         this.price=price;
         this.quantity=quantity; this.remainingQuantity = this.quantity;
     }
+
 
     public void manageExchangedQuantity(long exchanged_quantity){
         this.remainingQuantity -=  exchanged_quantity;

@@ -8,21 +8,21 @@ NB: ce code conduit à un blocage ("deadlock") si seulement N forkSemaphore.
 pour éviter l'inter-blocage , il faut un autre sémaphore "room" (salle où seulement N-1 philosophes peuvent entrer pour manger)
  */
 
-public class PhilosopherTask implements Runnable {
+public class PhilosopherTaskWithDeadLock implements Runnable {
     public static final int N = 5;  // Number of philosophers
     public static final Semaphore[] forkSemaphore = new Semaphore[N];
-    public static final Semaphore roomSemaphore = new Semaphore(N-1);
+
 
     public static void init(){
         // Initialize fork semaphores
         for (int i = 0; i < N; i++) {
-            PhilosopherTask.forkSemaphore[i] = new Semaphore(1);
+            PhilosopherTaskWithDeadLock.forkSemaphore[i] = new Semaphore(1);
         }
     }
 
     private final int id;
 
-    PhilosopherTask(int id) {
+    PhilosopherTaskWithDeadLock(int id) {
         this.id = id;
     }
 
@@ -34,7 +34,7 @@ public class PhilosopherTask implements Runnable {
 
             /************************/
             //enter dinner room (essential , without this : deadlock) , //INDISPENSABLE:
-            try { roomSemaphore.acquire(); } catch (InterruptedException e) { e.printStackTrace(); }
+            //TO DO (TP) ..........
             /************************/
 
             // Pick up left fork
@@ -54,7 +54,7 @@ public class PhilosopherTask implements Runnable {
 
             /************************/
             //exit (dinner room) :
-            roomSemaphore.release();  //INDISPENSABLE
+            //TO DO (TP) ..........
             /************************/
 
             System.out.println("Philosopher " + id + " finished eating and put down forks.");

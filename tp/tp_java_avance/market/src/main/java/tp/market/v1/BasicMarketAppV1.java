@@ -3,11 +3,11 @@ package tp.market.v1;
 import tp.market.model.Stock;
 import tp.market.service.StockService;
 import tp.market.service.StockServiceImpl;
-import tp.market.v1.task.OrderCollectorTask;
-import tp.market.v1.task.OrderExecutorTask;
-import tp.market.v1.task.RefreshExchangesTask;
+import tp.market.v1.task.OrderCollectorTaskV1;
+import tp.market.v1.task.OrderExecutorTaskV1;
+import tp.market.v1.task.RefreshExchangesTaskV1;
 
-public class BasicMarketApp {
+public class BasicMarketAppV1 {
     public static void main(String[] args) {
         System.out.println("basic market app (v1: multithread )");
         initDataSet();
@@ -16,15 +16,15 @@ public class BasicMarketApp {
         //n(=5) threads de type "collect_order"
         int n=5;
         for(int i=1;i<=5;i++){
-            Thread orderCollectorThread = new Thread(new OrderCollectorTask(String.valueOf(i)));
+            Thread orderCollectorThread = new Thread(new OrderCollectorTaskV1(String.valueOf(i)));
             orderCollectorThread.start();
         }
         //1 thread de type "execute_orders" :
-        Thread orderExecutorThread = new Thread(new OrderExecutorTask());
+        Thread orderExecutorThread = new Thread(new OrderExecutorTaskV1());
         orderExecutorThread.start();
 
         //1 thread de type "refresh_exchanges":
-        Thread refreshExchangesThread = new Thread(new RefreshExchangesTask());
+        Thread refreshExchangesThread = new Thread(new RefreshExchangesTaskV1());
         refreshExchangesThread.start();
     }
 
