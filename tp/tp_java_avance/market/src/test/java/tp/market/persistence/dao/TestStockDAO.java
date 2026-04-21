@@ -3,12 +3,13 @@ package tp.market.persistence.dao;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import tp.market.model.Stock;
+import tp.market.persistence.jpa.MyJpaUtil;
 import tp.market.persistence.entity.StockEntity;
+import tp.market.persistence.util.DatabaseUtil;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
 public class TestStockDAO {
@@ -17,15 +18,37 @@ public class TestStockDAO {
 
     @BeforeAll
     public static void initStockDao(){
+        MyJpaUtil.setHbm2ddlAuto(true);
         stockDAO=new StockDaoJpa();
+        DatabaseUtil.reInitDataSet(stockDAO); //reinit database content with cac40 stocks
     }
 
     @Test
-    public void testSaveNewAndFindAll(){
-        stockDAO.saveNew(new StockEntity("ACCOR" , "AC.PA" , " FR0000120404" , 45.06 ));
-        stockDAO.saveNew(new StockEntity("AIR LIQUIDE" , "AI.PA" , " FR0000120073" , 183.18 ));
+    public void testFindAllStock(){
         List<StockEntity> stockEntityList = stockDAO.findAll();
-        assertTrue(stockEntityList.size()>=2);
+        assertTrue(stockEntityList.size()>=40);
         log.info("stockEntityList="+stockEntityList);
     }
+
+    @Test
+    public void testCrudStock(){
+        String pk="XYZ.PA";
+        stockDAO.saveNew(new StockEntity("Xyz" , pk , "FR1234567890" , 2.02 ));
+        //StockEntity sRelu = stockDAO.findById(pk);
+        StockEntity sRelu = stockDAO.findByIsin("FR1234567890"); //efficient search with index on unique isin (not pk)
+        log.info("sRelu="+sRelu);
+        assertEquals("Xyz",sRelu.getName());
+        assertEquals(2.02,sRelu.getCurrentQuote(),0.00001);
+        sRelu.setName("Xyz2"); sRelu.setCurrentQuote(4.04);
+        stockDAO.update(sRelu);
+        StockEntity sRelu2 = stockDAO.findById(pk);
+        log.info("sRelu2="+sRelu2);
+        assertEquals("Xyz2",sRelu.getName());
+        assertEquals(4.04,sRelu.getCurrentQuote(),0.00001);
+        stockDAO.deleteById(pk);
+        StockEntity sRelu3 = stockDAO.findById(pk);
+        assertNull(sRelu3);
+    }
+
+
 }

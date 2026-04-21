@@ -1,21 +1,34 @@
 package tp.market.persistence.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import tp.market.model.StockExchange;
+
+import java.util.List;
 
 @Entity
-@Table(name="stock")
+@Table(name="stock" , indexes = @Index(name="idx_isin" , columnList = "isin" , unique = true))
 @Getter
 @Setter
 @NoArgsConstructor
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+/*
+@Cache usages:
+   READ_ONLY : only for data that never change
+   READ_WRITE : with automatic cache lock during update/transaction
+   NONSTRICT_READ_WRITE : rapid but risk of unconstitency durring a small period
+   TRANSACTIONAL : with XA/two-phase-commit
+ */
 public class StockEntity {
     private String isin ;//code (ex: FR0000120321) (ISIN: (International Securities Identification Number)
     private String name; //ex: L'Oréal S.A
+
+    @OneToMany(fetch = FetchType.LAZY , mappedBy = "stock" , cascade = { CascadeType.REMOVE})
+    private List<StockExchangeEntity> stockExchanges;
 
     @Id //no auto_incr
     @Column(name="symbol")
