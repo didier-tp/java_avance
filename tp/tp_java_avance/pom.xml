@@ -18,9 +18,13 @@
   
    <modules>
        <module>exos_threads</module>
-       <module>market</module>
-       <module>common_market</module>
+       <module>market_core</module>
+       <module>market_api</module>
        <module>trader</module>
+       <module>market_server</module>
+       <module>market_spi</module>
+       <module>market_persistence</module>
+       <module>market_model</module>
    </modules>
   
   

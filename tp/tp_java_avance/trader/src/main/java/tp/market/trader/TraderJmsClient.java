@@ -3,10 +3,10 @@ package tp.market.trader;
 import lombok.extern.slf4j.Slf4j;
 import tools.jackson.core.type.TypeReference;
 import tp.market.jms.MarketMessage;
-import tp.market.model.Stock;
-import tp.market.model.TradingOrder;
-import tp.market.service.OrderService;
-import tp.market.service.OrderServiceImpl;
+import tp.market.core.model.Stock;
+import tp.market.core.model.TradingOrder;
+import tp.market.core.service.OrderService;
+import tp.market.core.service.OrderServiceImpl;
 import tp.market.util.MyJsonUtil;
 import tp.market.util.MyThreadUtil;
 

@@ -9,9 +9,12 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>trader</artifactId>
+    <artifactId>market_server</artifactId>
 
     <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
@@ -21,6 +24,20 @@
             <artifactId>market_api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+
+        <dependency>
+            <groupId>tp</groupId>
+            <artifactId>market_core</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <!--
+        <dependency>
+            <groupId>tp</groupId>
+            <artifactId>market_persistence</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        -->
 
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -43,6 +60,6 @@
             <version>2.51.0</version>
             <scope>compile</scope>
         </dependency>
-    </dependencies>
 
+    </dependencies>
 </project>

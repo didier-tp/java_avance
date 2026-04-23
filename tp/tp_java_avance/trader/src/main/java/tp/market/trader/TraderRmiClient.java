@@ -1,12 +1,12 @@
 package tp.market.trader;
 
-import tp.market.model.Stock;
-import tp.market.model.TradingOrder;
+import tp.market.core.model.Stock;
+import tp.market.core.model.TradingOrder;
 import tp.market.rmi_api.MarketRemoteFactory;
 import tp.market.rmi_api.OrderRmiApi;
 import tp.market.rmi_api.StockRmiApi;
-import tp.market.service.OrderService;
-import tp.market.service.OrderServiceImpl;
+import tp.market.core.service.OrderService;
+import tp.market.core.service.OrderServiceImpl;
 import tp.market.util.MyThreadUtil;
 
 import java.rmi.registry.LocateRegistry;

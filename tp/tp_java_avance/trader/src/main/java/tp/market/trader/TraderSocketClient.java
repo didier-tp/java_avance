@@ -1,15 +1,14 @@
 package tp.market.trader;
 
 import tp.market.message.*;
-import tp.market.model.Stock;
-import tp.market.model.TradingOrder;
-import tp.market.service.OrderService;
-import tp.market.service.OrderServiceImpl;
+import tp.market.core.model.Stock;
+import tp.market.core.model.TradingOrder;
+import tp.market.core.service.OrderService;
+import tp.market.core.service.OrderServiceImpl;
 import tp.market.util.MyThreadUtil;
 
 import java.io.*;  import java.net.UnknownHostException;
 import java.net.InetAddress;     import java.net.Socket;
-import java.nio.ByteBuffer;
 import java.util.List;
 
 public class TraderSocketClient {

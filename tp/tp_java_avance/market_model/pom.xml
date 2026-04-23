@@ -9,19 +9,15 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>trader</artifactId>
+    <artifactId>market_model</artifactId>
 
     <properties>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <dependencies>
-
-        <dependency>
-            <groupId>tp</groupId>
-            <artifactId>market_api</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -36,11 +32,10 @@
             <version>2.25.4</version>
         </dependency>
 
-        <!-- uniquement utile pour la partie JMS -->
         <dependency>
-            <groupId>org.apache.artemis</groupId>
-            <artifactId>artemis-jms-client</artifactId>
-            <version>2.51.0</version>
+            <groupId>tools.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>3.1.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>
