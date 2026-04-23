@@ -6838,9 +6838,10 @@
 												"$ref": "AAAAAAGdtTXIM/1g7/c="
 											},
 											"visible": false,
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;0",
-											"left": 48,
-											"top": -112,
+											"left": 192,
+											"top": 128,
 											"height": 13
 										},
 										{
@@ -6849,9 +6850,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtTXIM/1g7/c="
 											},
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;1",
-											"left": 381,
-											"top": 238,
+											"left": 453,
+											"top": 358,
 											"width": 77.3271484375,
 											"height": 13,
 											"text": "market_core"
@@ -6863,9 +6865,10 @@
 												"$ref": "AAAAAAGdtTXIM/1g7/c="
 											},
 											"visible": false,
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;0",
-											"left": 48,
-											"top": -112,
+											"left": 192,
+											"top": 128,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -6877,16 +6880,18 @@
 												"$ref": "AAAAAAGdtTXIM/1g7/c="
 											},
 											"visible": false,
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;0",
-											"left": 48,
-											"top": -112,
+											"left": 192,
+											"top": 128,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#a3e0ff",
 									"font": "Arial;13;0",
-									"left": 376,
-									"top": 231,
+									"left": 448,
+									"top": 351,
 									"width": 87.3271484375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -6903,10 +6908,11 @@
 									}
 								}
 							],
+							"fillColor": "#a3e0ff",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 376,
-							"top": 216,
+							"left": 448,
+							"top": 336,
 							"width": 87.3271484375,
 							"height": 40,
 							"nameCompartment": {
@@ -6940,9 +6946,10 @@
 												"$ref": "AAAAAAGdtTY3S/16JJg="
 											},
 											"visible": false,
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": -224,
-											"top": -32,
+											"left": -144,
+											"top": 224,
 											"height": 13
 										},
 										{
@@ -6951,9 +6958,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtTY3S/16JJg="
 											},
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;1",
-											"left": 165,
-											"top": 158,
+											"left": 205,
+											"top": 286,
 											"width": 68.64990234375,
 											"height": 13,
 											"text": "market_api"
@@ -6965,9 +6973,10 @@
 												"$ref": "AAAAAAGdtTY3S/16JJg="
 											},
 											"visible": false,
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": -224,
-											"top": -32,
+											"left": -144,
+											"top": 224,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -6979,16 +6988,18 @@
 												"$ref": "AAAAAAGdtTY3S/16JJg="
 											},
 											"visible": false,
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": -224,
-											"top": -32,
+											"left": -144,
+											"top": 224,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#ffffd8",
 									"font": "Arial;13;0",
-									"left": 160,
-									"top": 151,
+									"left": 200,
+									"top": 279,
 									"width": 78.64990234375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -7005,10 +7016,11 @@
 									}
 								}
 							],
+							"fillColor": "#ffffd8",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 160,
-							"top": 136,
+							"left": 200,
+							"top": 264,
 							"width": 78.64990234375,
 							"height": 40,
 							"nameCompartment": {
@@ -7042,9 +7054,10 @@
 												"$ref": "AAAAAAGdtTZaHP2Uc58="
 											},
 											"visible": false,
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": -160,
-											"top": 128,
+											"left": -80,
+											"top": 320,
 											"height": 13
 										},
 										{
@@ -7053,9 +7066,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtTZaHP2Uc58="
 											},
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;1",
-											"left": 197,
-											"top": 318,
+											"left": 237,
+											"top": 414,
 											"width": 88.9052734375,
 											"height": 13,
 											"text": "market_server"
@@ -7067,9 +7081,10 @@
 												"$ref": "AAAAAAGdtTZaHP2Uc58="
 											},
 											"visible": false,
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": -160,
-											"top": 128,
+											"left": -80,
+											"top": 320,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -7081,16 +7096,18 @@
 												"$ref": "AAAAAAGdtTZaHP2Uc58="
 											},
 											"visible": false,
+											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": -160,
-											"top": 128,
+											"left": -80,
+											"top": 320,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#ffffd8",
 									"font": "Arial;13;0",
-									"left": 192,
-									"top": 311,
+									"left": 232,
+									"top": 407,
 									"width": 98.9052734375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -7107,10 +7124,11 @@
 									}
 								}
 							],
+							"fillColor": "#ffffd8",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 192,
-							"top": 296,
+							"left": 232,
+							"top": 392,
 							"width": 98.9052734375,
 							"height": 40,
 							"nameCompartment": {
@@ -7144,9 +7162,10 @@
 												"$ref": "AAAAAAGdtTan/f2vAvQ="
 											},
 											"visible": false,
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": -32,
+											"left": 256,
+											"top": 64,
 											"height": 13
 										},
 										{
@@ -7155,9 +7174,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtTan/f2vAvQ="
 											},
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;1",
-											"left": 525,
-											"top": 182,
+											"left": 637,
+											"top": 230,
 											"width": 68.64990234375,
 											"height": 13,
 											"text": "market_spi"
@@ -7169,9 +7189,10 @@
 												"$ref": "AAAAAAGdtTan/f2vAvQ="
 											},
 											"visible": false,
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": -32,
+											"left": 256,
+											"top": 64,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -7183,16 +7204,18 @@
 												"$ref": "AAAAAAGdtTan/f2vAvQ="
 											},
 											"visible": false,
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;0",
-											"left": 32,
-											"top": -32,
+											"left": 256,
+											"top": 64,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#d8ffd8",
 									"font": "Arial;13;0",
-									"left": 520,
-									"top": 175,
+									"left": 632,
+									"top": 223,
 									"width": 78.64990234375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -7209,10 +7232,11 @@
 									}
 								}
 							],
+							"fillColor": "#d8ffd8",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 520,
-							"top": 160,
+							"left": 632,
+							"top": 208,
 							"width": 78.64990234375,
 							"height": 40,
 							"nameCompartment": {
@@ -7246,7 +7270,10 @@
 												"$ref": "AAAAAAGdtTbaPP3KZMk="
 											},
 											"visible": false,
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;0",
+											"left": 192,
+											"top": 224,
 											"height": 13
 										},
 										{
@@ -7255,9 +7282,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtTbaPP3KZMk="
 											},
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;1",
-											"left": 581,
-											"top": 278,
+											"left": 677,
+											"top": 390,
 											"width": 122.12890625,
 											"height": 13,
 											"text": "market_persistence"
@@ -7269,7 +7297,10 @@
 												"$ref": "AAAAAAGdtTbaPP3KZMk="
 											},
 											"visible": false,
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;0",
+											"left": 192,
+											"top": 224,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -7281,14 +7312,18 @@
 												"$ref": "AAAAAAGdtTbaPP3KZMk="
 											},
 											"visible": false,
+											"fillColor": "#d8ffd8",
 											"font": "Arial;13;0",
+											"left": 192,
+											"top": 224,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#d8ffd8",
 									"font": "Arial;13;0",
-									"left": 576,
-									"top": 271,
+									"left": 672,
+									"top": 383,
 									"width": 132.12890625,
 									"height": 25,
 									"stereotypeLabel": {
@@ -7305,10 +7340,11 @@
 									}
 								}
 							],
+							"fillColor": "#d8ffd8",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 576,
-							"top": 256,
+							"left": 672,
+							"top": 368,
 							"width": 132.12890625,
 							"height": 40,
 							"nameCompartment": {
@@ -7342,9 +7378,10 @@
 												"$ref": "AAAAAAGdtTcpq/3pkK0="
 											},
 											"visible": false,
+											"fillColor": "#ffd8eb",
 											"font": "Arial;13;0",
-											"left": -192,
-											"top": -304,
+											"left": -224,
+											"top": -32,
 											"height": 13
 										},
 										{
@@ -7353,9 +7390,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtTcpq/3pkK0="
 											},
+											"fillColor": "#ffd8eb",
 											"font": "Arial;13;1",
-											"left": 53,
-											"top": 246,
+											"left": 37,
+											"top": 382,
 											"width": 59.99169921875,
 											"height": 13,
 											"text": "trader"
@@ -7367,9 +7405,10 @@
 												"$ref": "AAAAAAGdtTcpq/3pkK0="
 											},
 											"visible": false,
+											"fillColor": "#ffd8eb",
 											"font": "Arial;13;0",
-											"left": -192,
-											"top": -304,
+											"left": -224,
+											"top": -32,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -7381,16 +7420,18 @@
 												"$ref": "AAAAAAGdtTcpq/3pkK0="
 											},
 											"visible": false,
+											"fillColor": "#ffd8eb",
 											"font": "Arial;13;0",
-											"left": -192,
-											"top": -304,
+											"left": -224,
+											"top": -32,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#ffd8eb",
 									"font": "Arial;13;0",
-									"left": 48,
-									"top": 239,
+									"left": 32,
+									"top": 375,
 									"width": 69.99169921875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -7407,10 +7448,11 @@
 									}
 								}
 							],
+							"fillColor": "#ffd8eb",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 48,
-							"top": 224,
+							"left": 32,
+							"top": 360,
 							"width": 69.99169921875,
 							"height": 40,
 							"nameCompartment": {
@@ -7438,8 +7480,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 130,
-									"top": 180,
+									"left": 143,
+									"top": 311,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7459,8 +7501,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 121,
-									"top": 168,
+									"left": 136,
+									"top": 298,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7480,8 +7522,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 147,
-									"top": 205,
+									"left": 158,
+									"top": 338,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7499,7 +7541,7 @@
 								"$ref": "AAAAAAGdtTcpq/3oc4E="
 							},
 							"lineStyle": 1,
-							"points": "108:223;170:176",
+							"points": "102:359;200:304",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtTeFs/4El+M="
@@ -7532,8 +7574,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 323,
-									"top": 255,
+									"left": 385,
+									"top": 361,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7553,8 +7595,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 317,
-									"top": 241,
+									"left": 381,
+									"top": 346,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7574,8 +7616,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 336,
-									"top": 282,
+									"left": 392,
+									"top": 390,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7593,7 +7635,7 @@
 								"$ref": "AAAAAAGdtTZaHP2TmNs="
 							},
 							"lineStyle": 1,
-							"points": "285:295;375:255",
+							"points": "331:397;447:367",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtTeea/4Vqtk="
@@ -7626,8 +7668,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 204,
-									"top": 232,
+									"left": 244,
+									"top": 345,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7647,8 +7689,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 189,
-									"top": 236,
+									"left": 230,
+									"top": 350,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7668,8 +7710,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 233,
-									"top": 225,
+									"left": 273,
+									"top": 336,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7687,7 +7729,7 @@
 								"$ref": "AAAAAAGdtTZaHP2TmNs="
 							},
 							"lineStyle": 1,
-							"points": "235:295;204:176",
+							"points": "273:391;245:304",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtTeuUv4m+sA="
@@ -7720,8 +7762,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 485,
-									"top": 186,
+									"left": 571,
+									"top": 272,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7741,8 +7783,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 480,
-									"top": 172,
+									"left": 562,
+									"top": 260,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7762,8 +7804,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 496,
-									"top": 213,
+									"left": 588,
+									"top": 297,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7781,7 +7823,7 @@
 								"$ref": "AAAAAAGdtTXIM/1f3ZE="
 							},
 							"lineStyle": 1,
-							"points": "463:217;519:195",
+							"points": "519:335;641:248",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtTfgjP5IyxY="
@@ -7814,8 +7856,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 588,
-									"top": 230,
+									"left": 690,
+									"top": 306,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -7835,8 +7877,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 577,
-									"top": 240,
+									"left": 676,
+									"top": 312,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -7856,8 +7898,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 611,
-									"top": 211,
+									"left": 717,
+									"top": 295,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -7875,7 +7917,7 @@
 								"$ref": "AAAAAAGdtTbaPP3JZOA="
 							},
 							"lineStyle": 1,
-							"points": "624:255;576:200",
+							"points": "729:367;679:248",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtTf1i/5Zvn0="
@@ -7894,11 +7936,11 @@
 								"$ref": "AAAAAAGdtTVdov1BjeQ="
 							},
 							"font": "Arial;13;0",
-							"left": 664,
-							"top": 328,
-							"width": 104.525390625,
-							"height": 105,
-							"text": "itf_DAO + Entity + impl_DAO + tests\n+ adaptateur itf_DS/itf_DAO"
+							"left": 768,
+							"top": 472,
+							"width": 90.0908203125,
+							"height": 77,
+							"text": "Entités persistantes , DAO , adaptateur , ..."
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -7914,7 +7956,7 @@
 								"$ref": "AAAAAAGdtToqAv5tjQM="
 							},
 							"lineStyle": 1,
-							"points": "678:327;656:296"
+							"points": "788:471;750:408"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -7923,11 +7965,11 @@
 								"$ref": "AAAAAAGdtTVdov1BjeQ="
 							},
 							"font": "Arial;13;0",
-							"left": 424,
-							"top": 376,
-							"width": 108.15625,
+							"left": 448,
+							"top": 496,
+							"width": 201,
 							"height": 51,
-							"text": "internal_model + services implementation"
+							"text": "model interne et implémentation des  services \"coeur de métier\""
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -7943,7 +7985,7 @@
 								"$ref": "AAAAAAGdtTrv1P50bmA="
 							},
 							"lineStyle": 1,
-							"points": "468:375;426:256"
+							"points": "539:495;498:376"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -7952,11 +7994,11 @@
 								"$ref": "AAAAAAGdtTVdov1BjeQ="
 							},
 							"font": "Arial;13;0",
-							"left": 592,
-							"top": 88,
-							"width": 102.3671875,
-							"height": 51,
-							"text": "itf_DS using market_model"
+							"left": 736,
+							"top": 136,
+							"width": 137,
+							"height": 66,
+							"text": "vision abstraite de la persistance\n(SPI=Service Provider Interface)"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -7972,7 +8014,7 @@
 								"$ref": "AAAAAAGdtTum3P57WPQ="
 							},
 							"lineStyle": 1,
-							"points": "609:139;583:159"
+							"points": "735:198;711:209"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -7981,11 +8023,11 @@
 								"$ref": "AAAAAAGdtTVdov1BjeQ="
 							},
 							"font": "Arial;13;0",
-							"left": 112,
-							"top": 40,
-							"width": 113,
-							"height": 48,
-							"text": "some DTOs +itf_API + ..."
+							"left": 48,
+							"top": 112,
+							"width": 217,
+							"height": 51,
+							"text": "interfaces et structures de données échangées/véhiculées via le réseau"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -8001,7 +8043,7 @@
 								"$ref": "AAAAAAGdtT2x0P6GT4I="
 							},
 							"lineStyle": 1,
-							"points": "176:88;191:135"
+							"points": "171:163;227:263"
 						},
 						{
 							"_type": "UMLNoteView",
@@ -8010,11 +8052,11 @@
 								"$ref": "AAAAAAGdtTVdov1BjeQ="
 							},
 							"font": "Arial;13;0",
-							"left": 208,
-							"top": 400,
-							"width": 98.05712890625,
-							"height": 53,
-							"text": "api_impl,\nAppV1,V2,V3 .main()"
+							"left": 248,
+							"top": 472,
+							"width": 134.892578125,
+							"height": 77,
+							"text": "démarrage du serveur et réception/traitement des requêtes entrantes"
 						},
 						{
 							"_type": "UMLNoteLinkView",
@@ -8030,7 +8072,7 @@
 								"$ref": "AAAAAAGdtT6ysf6P5f8="
 							},
 							"lineStyle": 1,
-							"points": "252:399;243:336"
+							"points": "301:471;287:432"
 						},
 						{
 							"_type": "UMLPackageView",
@@ -8059,9 +8101,10 @@
 												"$ref": "AAAAAAGdtV1L9svMguE="
 											},
 											"visible": false,
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;0",
-											"left": -240,
-											"top": 16,
+											"left": -96,
+											"top": 208,
 											"height": 13
 										},
 										{
@@ -8070,9 +8113,10 @@
 											"_parent": {
 												"$ref": "AAAAAAGdtV1L9svMguE="
 											},
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;1",
-											"left": 301,
-											"top": 118,
+											"left": 373,
+											"top": 214,
 											"width": 122.83984375,
 											"height": 13,
 											"text": "market_model"
@@ -8084,9 +8128,10 @@
 												"$ref": "AAAAAAGdtV1L9svMguE="
 											},
 											"visible": false,
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;0",
-											"left": -240,
-											"top": 16,
+											"left": -96,
+											"top": 208,
 											"width": 115.57177734375,
 											"height": 13,
 											"text": "(from stock_market)"
@@ -8098,16 +8143,18 @@
 												"$ref": "AAAAAAGdtV1L9svMguE="
 											},
 											"visible": false,
+											"fillColor": "#a3e0ff",
 											"font": "Arial;13;0",
-											"left": -240,
-											"top": 16,
+											"left": -96,
+											"top": 208,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
+									"fillColor": "#a3e0ff",
 									"font": "Arial;13;0",
-									"left": 296,
-									"top": 111,
+									"left": 368,
+									"top": 207,
 									"width": 132.83984375,
 									"height": 25,
 									"stereotypeLabel": {
@@ -8124,10 +8171,11 @@
 									}
 								}
 							],
+							"fillColor": "#a3e0ff",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 296,
-							"top": 96,
+							"left": 368,
+							"top": 192,
 							"width": 132.83984375,
 							"height": 40,
 							"nameCompartment": {
@@ -8155,8 +8203,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 263,
-									"top": 117,
+									"left": 321,
+									"top": 229,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8176,8 +8224,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 259,
-									"top": 102,
+									"left": 316,
+									"top": 215,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -8197,8 +8245,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 270,
-									"top": 146,
+									"left": 332,
+									"top": 258,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -8216,7 +8264,7 @@
 								"$ref": "AAAAAAGdtTY3S/15460="
 							},
 							"lineStyle": 1,
-							"points": "239:145;295:131",
+							"points": "279:268;376:232",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtV4EiMvoMwc="
@@ -8249,8 +8297,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 376,
-									"top": 175,
+									"left": 448,
+									"top": 282,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8270,8 +8318,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 363,
-									"top": 182,
+									"left": 434,
+									"top": 288,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -8291,8 +8339,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 403,
-									"top": 162,
+									"left": 475,
+									"top": 271,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -8310,7 +8358,7 @@
 								"$ref": "AAAAAAGdtTXIM/1f3ZE="
 							},
 							"lineStyle": 1,
-							"points": "409:215;371:136",
+							"points": "483:335;441:232",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtV4+xcv55uU="
@@ -8343,8 +8391,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 467,
-									"top": 159,
+									"left": 565,
+									"top": 228,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8364,8 +8412,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 462,
-									"top": 173,
+									"left": 564,
+									"top": 243,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -8385,8 +8433,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 476,
-									"top": 130,
+									"left": 566,
+									"top": 199,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -8404,7 +8452,7 @@
 								"$ref": "AAAAAAGdtTan/f2u3CE="
 							},
 							"lineStyle": 1,
-							"points": "519:166;426:136",
+							"points": "631:224;501:216",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGdtV5NGMwKkxE="
@@ -8424,7 +8472,7 @@
 							},
 							"font": "Arial;13;0",
 							"left": 408,
-							"top": 24,
+							"top": 104,
 							"width": 111.787109375,
 							"height": 51,
 							"text": "exposed_model + core_service_itf"
@@ -8443,7 +8491,7 @@
 								"$ref": "AAAAAAGdtWBReswvoJo="
 							},
 							"lineStyle": 1,
-							"points": "423:75;392:95"
+							"points": "453:155;440:191"
 						},
 						{
 							"_type": "UMLDependencyView",
@@ -8466,8 +8514,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 431,
-									"top": 275,
+									"left": 604,
+									"top": 348,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -8485,17 +8533,18 @@
 									"model": {
 										"$ref": "AAAAAAGduUAVnSmv8s8="
 									},
-									"visible": null,
 									"font": "Arial;13;0",
-									"left": 430,
-									"top": 260,
+									"left": 564,
+									"top": 372,
+									"width": 67.18359375,
 									"height": 13,
-									"alpha": 1.5707963267948966,
-									"distance": 30,
+									"alpha": -1.982089335943607,
+									"distance": 10.816653826391969,
 									"hostEdge": {
 										"$ref": "AAAAAAGduUAVnimxwaE="
 									},
-									"edgePosition": 1
+									"edgePosition": 1,
+									"text": "«minimum»"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -8508,8 +8557,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 434,
-									"top": 304,
+									"left": 601,
+									"top": 377,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -8524,10 +8573,10 @@
 								"$ref": "AAAAAAGdtTbaPP3JZOA="
 							},
 							"tail": {
-								"$ref": "AAAAAAGdtTZaHP2TmNs="
+								"$ref": "AAAAAAGdtTXIM/1f3ZE="
 							},
 							"lineStyle": 1,
-							"points": "291:310;575:282",
+							"points": "535:361;671:378",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGduUAVnimy4fg="
@@ -8538,6 +8587,48 @@
 							"propertyLabel": {
 								"$ref": "AAAAAAGduUAVnim0zqg="
 							}
+						},
+						{
+							"_type": "UMLNoteView",
+							"_id": "AAAAAAGdudaVYinJDx8=",
+							"_parent": {
+								"$ref": "AAAAAAGdtTVdov1BjeQ="
+							},
+							"font": "Arial;13;0",
+							"left": 56,
+							"top": 464,
+							"width": 137,
+							"height": 79,
+							"text": "application cliente\nqui peut envoyer des requêtes via sockets ou rmi ou jms"
+						},
+						{
+							"_type": "UMLNoteLinkView",
+							"_id": "AAAAAAGdudduqCnQUz8=",
+							"_parent": {
+								"$ref": "AAAAAAGdtTVdov1BjeQ="
+							},
+							"font": "Arial;13;0",
+							"head": {
+								"$ref": "AAAAAAGdtTcpq/3oc4E="
+							},
+							"tail": {
+								"$ref": "AAAAAAGdudaVYinJDx8="
+							},
+							"lineStyle": 1,
+							"points": "105:463;76:400"
+						},
+						{
+							"_type": "UMLTextView",
+							"_id": "AAAAAAGdud6zVioM+rs=",
+							"_parent": {
+								"$ref": "AAAAAAGdtTVdov1BjeQ="
+							},
+							"font": "Arial;24;0",
+							"left": 144,
+							"top": 16,
+							"width": 633,
+							"height": 36,
+							"text": "Stock_market en mode \"architecture pseudo-hexagonale\""
 						}
 					]
 				},
@@ -8641,11 +8732,12 @@
 								"$ref": "AAAAAAGdtTZaHP2R/gQ="
 							},
 							"source": {
-								"$ref": "AAAAAAGdtTZaHP2R/gQ="
+								"$ref": "AAAAAAGdtTXIM/1dA2I="
 							},
 							"target": {
 								"$ref": "AAAAAAGdtTbaPP3Hcig="
-							}
+							},
+							"stereotype": "minimum"
 						}
 					]
 				},
