@@ -25,6 +25,8 @@
        <module>market_spi</module>
        <module>market_persistence</module>
        <module>market_model</module>
+       <module>exos_java</module>
+       <module>with_mockito</module>
    </modules>
   
   
