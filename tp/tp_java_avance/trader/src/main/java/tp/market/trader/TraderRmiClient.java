@@ -44,6 +44,10 @@ public class TraderRmiClient {
         }
     }
 
+    /*
+    TP ici simplifié avec dépendance exceptionnelle sur market_core / OrderServiceImpl
+     */
+
     static void sendTradingOrderMessages(OrderRmiApi orderRmiApi, List<Stock> stockList){
         try {
             boolean stop=false;

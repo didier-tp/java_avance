@@ -23,6 +23,13 @@
         </dependency>
 
         <dependency>
+            <groupId>tp</groupId>
+            <artifactId>market_core</artifactId>
+            <!-- dependance temporaire exceptionnelle (tp simplifié) -->
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.42</version>
