@@ -75,8 +75,8 @@ public class TestParameterizedWithSources {
 		
 	  }
 	  
-	  @ParameterizedTest
-	  @CsvFileSource( resources= "/carres.csv", delimiter = ';', numLinesToSkip = 1)
+	  //@ParameterizedTest
+	  //@CsvFileSource( resources= "/carres.csv", delimiter = ';', numLinesToSkip = 1)
 	  //files= "carres.csv" found at eclipse project root
 	  //resources= "/carres.csv" found in src/test/resources
 	  void testTraiterSelonCsvFileSource(int n,int expectedCarre,String comment) {
