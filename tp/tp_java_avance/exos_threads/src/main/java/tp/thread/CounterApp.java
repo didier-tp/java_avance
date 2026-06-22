@@ -5,8 +5,10 @@ public class CounterApp {
         System.out.println("CounterApp (even,odd) with 2 threads , alternate execution (v2)");
         //Thread evenThread = new Thread(new CounterTaskV1(true));
         //Thread oddThread = new Thread(new CounterTaskV1(false));
-        Thread evenThread = new Thread(new CounterTaskV2(true));
-        Thread oddThread = new Thread(new CounterTaskV2(false));
+        //Thread evenThread = new Thread(new CounterTaskV2(true));
+        //Thread oddThread = new Thread(new CounterTaskV2(false));
+        Thread evenThread = new Thread(new CounterTaskV3(true));
+        Thread oddThread = new Thread(new CounterTaskV3(false));
         evenThread.start();
         oddThread.start();
     }
