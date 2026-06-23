@@ -25,8 +25,9 @@ public class BasicClientV2App {
         final InetAddress fServeur = serveur;
         for(int n=0;n<1500;n++) {
             //1500 clients en parallèle qui se connectent au même serveur:
-            Thread t = new Thread(()->aSocketClientConnectedToServer(fServeur, port));
-            t.start();
+            /*Thread t = new Thread(()->aSocketClientConnectedToServer(fServeur, port));
+            t.start();*/
+            Thread.ofVirtual().start(()->aSocketClientConnectedToServer(fServeur, port));
             try { Thread.sleep(5);  } catch (InterruptedException e) {  throw new RuntimeException(e); }
         }
         try {
@@ -63,12 +64,12 @@ public class BasicClientV2App {
     static String isEvenRequestResponseMessage(OutputStream out, InputStream in){
         String responseString = "?";
         try {
-            long startTime = System.nanoTime();
             double r = Math.random();
             int randomInt = (int) (r*1000);
             String randomIntAsString = String.valueOf(randomInt);
             //System.out.println("randomIntAsString="+randomIntAsString);
             byte[] requestData = MyBytesUtil.utf8Buffer64FromLittleString(randomIntAsString);
+            long startTime = System.nanoTime();
             out.write(requestData);
             byte[] responseData = in.readNBytes(64);
             responseString= MyBytesUtil.stringFromUtf8Buffer(responseData);

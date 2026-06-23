@@ -12,6 +12,7 @@ public class EvenOrOddV1Task implements Runnable{
     }
     @Override
     public void run() {
+        System.out.println("EvenOrOddV1Task.run() with thread=" + Thread.currentThread().getName());
         try {
             InputStream in = socketClient.getInputStream();
             OutputStream out = socketClient.getOutputStream();
