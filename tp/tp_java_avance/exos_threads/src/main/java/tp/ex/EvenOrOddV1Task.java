@@ -16,11 +16,12 @@ public class EvenOrOddV1Task implements Runnable{
             InputStream in = socketClient.getInputStream();
             OutputStream out = socketClient.getOutputStream();
             while (!stop) {
+
                 byte[] requestData = in.readNBytes(64);
                 //NB: in.readNBytes() renvoi un tableau de taille 0 si le flux est fermé par le client,
                 // donc on peut utiliser cette condition pour arrêter la boucle.
-                if(requestData.length==0){
-                    System.out.println("requestData.length==0 , stop");
+                if(requestData.length<64){
+                    System.out.println("requestData.length==0 ou <64, stop");
                     stop=true;   continue;
                 }
                 String requestString = MyBytesUtil.stringFromUtf8Buffer(requestData);
