@@ -14,13 +14,16 @@ public class BasicServerApp {
             ServerSocket socketServeur = new ServerSocket(port);
             System.out.println("initialisation du serveur , Socket  port="+port + " withVirtualThread=" + withVirtualThread);
             while (!stop) {
-                Socket socketClient = socketServeur.accept();
-                if(withVirtualThread){
-                    Thread.ofVirtual().start(new EvenOrOddTask(socketClient));
-                }else{
-                    Thread t = new Thread(new EvenOrOddTask(socketClient));
-                    t.start();
-                }
+                try(Socket socketClient = socketServeur.accept()) {
+                    if (withVirtualThread) {
+                        Thread.ofVirtual().start(new EvenOrOddTask(socketClient));
+                    } else {
+                        Thread t = new Thread(new EvenOrOddTask(socketClient));
+                        t.start();
+                    }
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }//automatic close of socketClient
             }
         } catch (Exception e) {  e.printStackTrace();        }
     }
