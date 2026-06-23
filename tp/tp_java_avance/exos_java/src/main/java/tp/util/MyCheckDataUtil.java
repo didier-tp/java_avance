@@ -14,18 +14,19 @@ public class MyCheckDataUtil {
         try {
             Class c = obj.getClass();
             for(Field f : c.getDeclaredFields()) {
-                f.setAccessible(true);
-                Object valueOfField = f.get(obj);
-                String sValueOfField = valueOfField!=null?valueOfField.toString():"null";
                 MyMinimum annotMini = f.getAnnotation(MyMinimum.class);
                 if(annotMini!=null){
+                    f.setAccessible(true);
                     int minValue = annotMini.value();
                     String message = annotMini.message();
-                    int iValueOfField = Integer.parseInt(sValueOfField);
-                    if(iValueOfField < minValue){
-                        System.err.println("Error: " + message + " (field: " + f.getName() + ", value: " + valueOfField + ")");
-                        // Optionally, throw an exception
-                        throw new IllegalArgumentException(message);
+                    Object valueOfField = f.get(obj);
+                    if(valueOfField != null && valueOfField instanceof Integer) {
+                        int iValueOfField = (Integer) valueOfField;
+                        if (iValueOfField < minValue) {
+                            System.err.println("Error: " + message + " (field: " + f.getName() + ", value: " + iValueOfField + ")");
+                            // Optionally, throw an exception
+                            throw new IllegalArgumentException(message);
+                        }
                     }
                 }
             }
