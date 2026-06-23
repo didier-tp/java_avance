@@ -6,12 +6,13 @@ import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.List;
 
-public class BasicClientApp {
+public class BasicClientV2App {
 
     static int port = 9632;
     static long totalExecTime=0L;
+    static int nbEven=0;
+    static int nbOdd=0;
 
     public static void main(String[] args) {
         String host = (args.length>0)?args[0]:"localhost";
@@ -29,13 +30,14 @@ public class BasicClientApp {
             try { Thread.sleep(5);  } catch (InterruptedException e) {  throw new RuntimeException(e); }
         }
         try {
-            Thread.sleep(3000 * 11); //attente avant d'afficher totalExecTime
+            Thread.sleep(3000 * 4); //attente avant d'afficher totalExecTime
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
+        System.out.println("nbEven="+nbEven + " nbOdd="+nbOdd);
         System.out.println("totalExecTime (ms)="+totalExecTime / 1000000);
-        //ex:  1514 , 1814, 1498 , ... avec virtualThread coté serveur
-        //ex: 1833 , 1977 sans virtualThread coté serveur
+        //ex:  1738 , 1445 , 1342 avec virtualThread coté serveur
+        //ex:  2267 , 2119 , 2076 (ms) sans virtualThread coté serveur
     }
 
     public static void aSocketClientConnectedToServer(InetAddress serveur , int port) {
@@ -46,11 +48,16 @@ public class BasicClientApp {
             for(int i=0;i<3;i++) {
                 String isEven = isEvenRequestResponseMessage(out, in);
                 //System.out.println("isEven=" + isEven);
+                if(isEven.equals("even"))
+                    nbEven++;
+                else
+                     nbOdd++;
                 Thread.sleep(3000);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } //try with auto_closeable resource=socket .
+        // et coté serveur : in.readNBytes(...) retournera exceptionnelement un tableau de taille 0.
     }
 
     static String isEvenRequestResponseMessage(OutputStream out, InputStream in){
