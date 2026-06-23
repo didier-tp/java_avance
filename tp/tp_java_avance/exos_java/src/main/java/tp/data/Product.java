@@ -5,6 +5,7 @@ import tp.annotations.CsvIgnore;
 public class Product {
 	private Long id;
 	private String label;
+    //@CsvIgnore
 	private Double price;
 	
 	@CsvIgnore

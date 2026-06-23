@@ -10,6 +10,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Target(FIELD)
 public @interface MyMinimum {
     int value();
+    String message() default "Value is below the minimum allowed";
 }
 
 

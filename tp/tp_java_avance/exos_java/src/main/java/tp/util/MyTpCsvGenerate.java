@@ -1,5 +1,6 @@
 package tp.util;
 
+import tp.annotations.CsvIgnore;
 import tp.data.Person;
 import tp.data.Product;
 
@@ -26,6 +27,9 @@ public class MyTpCsvGenerate {
             Field[] tabChamps = c.getDeclaredFields();
             boolean firstField=true;
             for(Field f : tabChamps) {
+                CsvIgnore annotCsvIgnore = f.getAnnotation(CsvIgnore.class);
+                //si annotCsvIgnore==null , @CsvIgnore n'a pas été placé au dessus de f
+                if(annotCsvIgnore!=null) continue; //on ignore ce champ
                 if(forFirstLine){
                     if(!firstField)   sb.append(";");
                     sb.append(f.getName());

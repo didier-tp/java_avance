@@ -22,7 +22,7 @@ public class Person {
 	private Integer age;
 	
 	
-	@MyMinimum(25) //25cm
+	@MyMinimum(value=25 , message="la taille doit etre superieure ou egal à 25") //25cm
 	private Integer taille;
 
 	
