@@ -1,0 +1,5 @@
+https://github.com/didier-mycontrib/java-jms
+https://github.com/didier-mycontrib/java-rmi
+https://github.com/didier-mycontrib/java-sockets
+https://github.com/didier-mycontrib/java_8_9_1x (avec parties "divers" et autres)
+https://github.com/didier-mycontrib/java_new_21plus

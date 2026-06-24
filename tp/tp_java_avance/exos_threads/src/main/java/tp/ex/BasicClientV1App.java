@@ -8,7 +8,7 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class BasicClientV1App {
-
+     //filtre pour wireshark : tcp.port==9632
     static int port = 9632;
     static long totalExecTime=0L;
 
