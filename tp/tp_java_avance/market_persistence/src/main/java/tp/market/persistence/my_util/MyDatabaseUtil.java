@@ -6,7 +6,7 @@ import tp.market.persistence.my_entity.MyStockEntity;
 public class MyDatabaseUtil {
 
     public static void reInitDataSet(MyStockDAO stockDAO){
-        stockDAO.saveNew(new MyStockEntity("ACCOR" , "AC.PA" , " FR0000120404" , 45.06 ));
+        stockDAO.saveNew(new MyStockEntity("ACCOR" , "AC.PA" , " FR0000120404" , 45.07 ));
         stockDAO.saveNew(new MyStockEntity("AIR LIQUIDE" , "AI.PA" , " FR0000120073" , 183.18));
         stockDAO.saveNew(new MyStockEntity("AIRBUS GROUP" , "AIR.PA" , "NL0000235190" , 174.95 ));
         stockDAO.saveNew(new MyStockEntity("ARCELORMITAL" , "MT.PA" , "LU1598757687" , 51.12 ));

@@ -18,7 +18,7 @@ public class BasicMarketServerAppV2 {
         //BasicMarketExecution.INSTANCE.addOrderCollectorTask(new OrderCollectorTaskV1(String.valueOf(0)));
         BasicMarketExecution.INSTANCE.addOrderCollectorTask(new OrderCollectorTaskSocketV2(String.valueOf(1)));
         BasicMarketExecution.INSTANCE.addOrderCollectorTask(new OrderCollectorTaskRmiV2(String.valueOf(2)));
-        BasicMarketExecution.INSTANCE.addOrderCollectorTask(new OrderCollectorTaskJmsV2(String.valueOf(3)));
+       // BasicMarketExecution.INSTANCE.addOrderCollectorTask(new OrderCollectorTaskJmsV2(String.valueOf(3)));
 
         BasicMarketExecution.INSTANCE.setOrderExecutorTask(new OrderExecutorTaskV1());
         BasicMarketExecution.INSTANCE.setRefreshExchangesTask(new RefreshExchangesTaskV1());

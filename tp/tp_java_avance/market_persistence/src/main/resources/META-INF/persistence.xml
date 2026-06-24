@@ -9,8 +9,10 @@
              Hibernate (ou OpenJpa ou EclipseLink) -->
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<!-- indiquer liste des classes avec @Entity (facultatif avec Spring ou autre) -->
-		<class>tp.market.persistence.entity.StockEntity</class>
-		<class>tp.market.persistence.entity.StockExchangeEntity</class>
+		<class>tp.market.persistence.my_entity.MyStockEntity</class>
+        <class>tp.market.persistence.my_entity.MyStockExchangeEntity</class>
+        <!-- <class>tp.market.persistence.entity.StockEntity</class> -->
+        <!-- <class>tp.market.persistence.entity.StockExchangeEntity</class> -->
 		<!-- configurer d'une facon ou d'une autre une connexion a la base de donnees -->
 		<!-- aujourd'hui via des proprietes specifiques Hibernate -->
 		<properties>
