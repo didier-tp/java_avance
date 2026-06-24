@@ -54,7 +54,7 @@ public class TestMyStockExchangeDAO {
         //appeler une méthode récupérant tous les échanges associés à la première action
         List<MyStockExchangeEntity> exchangesS1= this.stockExchangeDAO.findExchangesByStockId(s1.getSymbol());
         //afficher le résultat via log.info
-        log.info("exchangesS1"+exchangesS1);
+        log.info("exchangesS1="+exchangesS1);
         //verifier la taille (==2) via un assertTrue(...) approprié
         assertTrue(exchangesS1.size()==2);
     }

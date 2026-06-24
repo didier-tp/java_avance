@@ -1,5 +1,6 @@
 package tp.market.persistence.dao;
 
+import jakarta.persistence.EntityGraph;
 import tp.market.persistence.entity.StockEntity;
 import tp.market.persistence.generic.GenericDaoJpa;
 import tp.market.persistence.jpa.MyJpaUtil;
@@ -14,11 +15,30 @@ public class StockDaoJpa extends GenericDaoJpa<StockEntity,String> implements St
 
     @Override
     //query with FETCH keywork to avoid LazyInitializationException
+    /*
     public StockEntity findByIdWithExchanges(String stockId) {
         StockEntity stockEntity = null;
         stockEntity = (StockEntity) MyJpaUtil.execInTransaction(entityManager ->
                 entityManager.createQuery("SELECT s FROM StockEntity s LEFT JOIN FETCH s.stockExchanges se WHERE s.symbol = :stockId",
                         StockEntity.class).setParameter("stockId",stockId).getSingleResultOrNull()
+        );
+        return stockEntity;
+    }
+    */
+
+
+    //via entityGraph à la place du mot clef fetch
+    public StockEntity findByIdWithExchanges(String stockId) {
+
+        StockEntity stockEntity = null;
+        stockEntity = (StockEntity) MyJpaUtil.execInTransaction(entityManager -> {
+                 EntityGraph entityGraph = entityManager.getEntityGraph("entity-graph-stock-exchanges");
+                 return   entityManager.createQuery("SELECT s FROM StockEntity s  WHERE s.symbol = :stockId",
+                            StockEntity.class)
+                            .setParameter("stockId", stockId)
+                             .setHint("javax.persistence.fetchgraph", entityGraph)
+                            .getSingleResultOrNull();
+                }
         );
         return stockEntity;
     }

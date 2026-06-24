@@ -44,14 +44,14 @@ public class TestStockExchangeDAO {
         //List<StockExchangeEntity> exchanges = stockExchangeDAO.badFindByStockIdWithSqlInjectionProblem(stockId1); //via JPQL query and without .setParameter
         //List<StockExchangeEntity> exchanges = stockExchangeDAO.badFindByStockIdWithSqlInjectionProblem(stockId1+"' OR se.stock.symbol = 'ABC.PA"); //hacked JPQL query and without .setParameter
         //List<StockExchangeEntity> exchanges = stockExchangeDAO.badFindByStockIdWithSqlInjectionProblem(stockId1+"' OR 1=1"); //hacked JPQL query and without .setParameter
-        List<StockExchangeEntity> exchanges = stockExchangeDAO.findByStockId(stockId1); //via JPQL query
+        //List<StockExchangeEntity> exchanges = stockExchangeDAO.findByStockId(stockId1); //via JPQL query
         //List<StockExchangeEntity> exchanges = stockExchangeDAO.findByStockId(stockId1+"' OR se.stock.symbol = 'ABC.PA"); //via JPQL query and setParameter , error on sql injection
         //List<StockExchangeEntity> exchanges = stockExchangeDAO.findByStockId(stockId1+" OR 1=1"); //via JPQL query and setParameter , error on sql injection
         //List<StockExchangeEntity> exchanges = stockExchangeDAO.findByCriteriaStockId(stockId1); //via Criteria api
         //List<ExchangeEssential> exchanges = stockExchangeDAO.findExchangeEssentialListByStockId(stockId1); //with projection/aggregation
 
         //List<StockExchangeEntity> exchanges =stockDAO.findById(stockId1).getStockExchanges(); //with LazyInitializationException
-        //List<StockExchangeEntity> exchanges =stockDAO.findByIdWithExchanges(stockId1).getStockExchanges(); //with LazyInitializationException
+        List<StockExchangeEntity> exchanges =stockDAO.findByIdWithExchanges(stockId1).getStockExchanges(); //without LazyInitializationException
 
 
         log.info("exchanges="+exchanges);

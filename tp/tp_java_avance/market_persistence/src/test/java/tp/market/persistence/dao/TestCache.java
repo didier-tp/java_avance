@@ -39,7 +39,7 @@ public class TestCache {
         long t2 = System.currentTimeMillis();
         Cache cache = emf.getCache();//2nd Level cache (shared by all users/threads/sessions/entityManager)
         boolean wasCached = cache.contains(StockEntity.class, pk);
-        log.info("findById execution time (with or woithout cache)="+(t2-t1));//ex: 12ms with cache , 35ms without cache
+        log.info("findById execution time (with or without cache)="+(t2-t1));//ex: 12ms with cache , 35ms without cache
         log.info("sRelu="+sRelu);
         log.info("wasCached="+wasCached);
         assertEquals("Sxx",sRelu.getName());

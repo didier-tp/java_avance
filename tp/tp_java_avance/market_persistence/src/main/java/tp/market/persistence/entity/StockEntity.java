@@ -9,6 +9,11 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import java.util.List;
 
 @Entity
+@NamedEntityGraph(name = "entity-graph-stock-exchanges",
+        attributeNodes = {
+                @NamedAttributeNode(value="stockExchanges")
+        }
+)
 @Table(name="stock" , indexes = @Index(name="idx_isin" , columnList = "isin" , unique = true))
 @Getter
 @Setter
@@ -26,6 +31,7 @@ public class StockEntity {
     private String isin ;//code (ex: FR0000120321) (ISIN: (International Securities Identification Number)
     private String name; //ex: L'Oréal S.A
 
+    //@OneToMany(fetch = FetchType.LAZY , mappedBy = "stock" )
     @OneToMany(fetch = FetchType.LAZY , mappedBy = "stock" , cascade = { CascadeType.REMOVE})
     private List<StockExchangeEntity> stockExchanges;
 
