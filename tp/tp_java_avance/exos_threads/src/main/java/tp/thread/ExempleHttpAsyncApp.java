@@ -1,5 +1,8 @@
 package tp.thread;
 
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -7,6 +10,12 @@ import java.net.http.HttpResponse;
 
 public class ExempleHttpAsyncApp {
 
+    public static Dto.CatFact parseCatFactJsonStringAsRecord(String catFactAsJsonString){
+        JsonMapper jsonMapper = JsonMapper.builder()
+                .enable(SerializationFeature.INDENT_OUTPUT)
+                .build();
+        return jsonMapper.readValue(catFactAsJsonString,Dto.CatFact.class);
+    }
     public static void main(String[] args)  throws Exception{
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest req =
@@ -15,18 +24,17 @@ public class ExempleHttpAsyncApp {
                         .GET()
                         .build();
 
-        //en tp , ajouter une etape intermédiaire (soit transformer en majuscule , soit de json en java).
+        //en tp , ajouter au moins une etape intermédiaire (ex de json en java et/ou soit transformer .fact en majuscule , ).
 
         client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
-                .thenApply(resp -> {
+                .thenAccept(resp -> {
                     System.out.println("recuperation réponse asynchrone / interpreted by " + Thread.currentThread().getName());
                     System.out.println("reponse status:" + resp.statusCode());
                     System.out.println("reponse uri:" + resp.uri().toString());
                     System.out.println("reponse type:" + resp.headers().map().get("Content-Type"));
                     System.out.println("reponse text size:" + resp.body().length());
-                    return resp.body().toUpperCase();
+                    System.out.println("response body:" + resp.body());
                 })
-                .thenAccept(bodyEnMaj -> { System.out.println("en majuscule:" + bodyEnMaj);})
                 .join(); // pour attendre la fin de l'execution asynchrone avant de terminer le main
     }
 }

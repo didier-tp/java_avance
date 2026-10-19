@@ -1,0 +1,14 @@
+A faire (si besoin) sur la machine de TP:
+----------------------------------------
+
+paramètres (windows)
+  personnalisation
+     barre taches
+       clavier tactile
+           TOUJOURS
+
+=======
+grâce à cela , icone "clavier virtuel/tactile" dans barre du bas
+---
+réglage conseillé du clavier virtuel/tactile : mode traditionnel (proche clavier réel)
+   

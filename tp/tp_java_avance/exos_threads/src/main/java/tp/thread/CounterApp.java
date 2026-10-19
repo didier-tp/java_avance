@@ -7,10 +7,10 @@ public class CounterApp {
         //Thread oddThread = new Thread(new CounterTaskV1(false));
         //Thread evenThread = new Thread(new CounterTaskV2(true));
         //Thread oddThread = new Thread(new CounterTaskV2(false));
-        //Thread evenThread = new Thread(new CounterTaskV3(true));
-        Thread evenThread = Thread.ofVirtual().unstarted(new CounterTaskV3(true));
-        //Thread oddThread = new Thread(new CounterTaskV3(false));
-        Thread oddThread = Thread.ofVirtual().unstarted(new CounterTaskV3(false));
+        Thread evenThread = new Thread(new CounterTaskV3(true));
+        //Thread evenThread = Thread.ofVirtual().unstarted(new CounterTaskV3(true));
+        Thread oddThread = new Thread(new CounterTaskV3(false));
+        //Thread oddThread = Thread.ofVirtual().unstarted(new CounterTaskV3(false));
         evenThread.start();
         oddThread.start();
         try {
