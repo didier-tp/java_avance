@@ -46,7 +46,7 @@ public class MyNumberConcurrentListV1WithoutBugs implements Runnable{
         for(int i=0;i<n;i++){
             for(int j=0;j<10;j++){
                 int randomInt = (new Random()).nextInt(0,255);
-                synchronized(numbers) {
+               synchronized(numbers) {
                     numbers.add(randomInt); //ajouter 6 nombres aléatoires entre 0 et 255 sans arret ou bien toutes les 2ms environ
                 }
             }
