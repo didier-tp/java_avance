@@ -52,12 +52,13 @@ public class PhilosopherTaskWithoutDeadLock implements Runnable {
 
             // Put down right fork
             forkSemaphore[(id + 1) % N].release();
+            System.out.println("Philosopher " + id + " finished eating and put down forks.");
 
             //exit (dinner room) :
             roomSemaphore.release();
             System.out.println("Philosopher " + id + " has leave the dinning room ...");
 
-            System.out.println("Philosopher " + id + " finished eating and put down forks.");
+
         }
     }
 
