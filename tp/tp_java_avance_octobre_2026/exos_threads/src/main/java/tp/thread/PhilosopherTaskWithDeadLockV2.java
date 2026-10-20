@@ -44,11 +44,11 @@ public class PhilosopherTaskWithDeadLockV2 implements Runnable {
             System.out.println("Philosopher " + id + " is eating...");
             sleep(1);
 
-            // Put down left fork
-            forkLock[id].unlock();
-
             // Put down right fork
             forkLock[(id + 1) % N].unlock();
+
+            // Put down left fork
+            forkLock[id].unlock();
 
 
             System.out.println("Philosopher " + id + " finished eating and put down forks.");
