@@ -4,6 +4,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class MyCounterTaskV2 implements Runnable{
     private boolean pair=false;
+    //NE PAS OUBLIER static devant ReentrantLock chacunSonTourlock
     static ReentrantLock chacunSonTourlock = new ReentrantLock(true); //true pour "fair" lock (selon ordre des appels à .lock())
     public MyCounterTaskV2(boolean pair){
         this.pair = pair;
