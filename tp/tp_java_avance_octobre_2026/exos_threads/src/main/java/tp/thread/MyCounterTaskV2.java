@@ -20,11 +20,12 @@ public class MyCounterTaskV2 implements Runnable{
        }
        while(n<25){
            chacunSonTourlock.lock();  //avec contrôle de l'ordre d'execution (surtout en mode "fair")
-           //synchronized(this) { //sans contrôle de l'ordre d'execution 
+           //synchronized(this) { //sans contrôle de l'ordre d'execution
                System.out.print(" " + n);
                n = n + 2;
            //}
            chacunSonTourlock.unlock();
        }
+        //System.out.println("code executé par " + Thread.currentThread().toString());
     }
 }

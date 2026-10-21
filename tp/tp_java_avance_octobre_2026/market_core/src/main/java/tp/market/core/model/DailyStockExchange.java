@@ -1,7 +1,7 @@
 package tp.market.core.model;
 
 //structure compatible avec https://www.alphavantage.co/query
-
+//PARTIELLEMENT EXPLOITE/UTILSE pour l'instant
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

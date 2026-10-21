@@ -27,14 +27,18 @@ public class ExempleHttpAsyncApp {
         //en tp , ajouter au moins une etape intermédiaire (ex de json en java et/ou soit transformer .fact en majuscule , ).
 
         client.sendAsync(req, HttpResponse.BodyHandlers.ofString())
-                .thenAccept(resp -> {
+                .thenApply(resp -> {
                     System.out.println("recuperation réponse asynchrone / interpreted by " + Thread.currentThread().getName());
                     System.out.println("reponse status:" + resp.statusCode());
                     System.out.println("reponse uri:" + resp.uri().toString());
                     System.out.println("reponse type:" + resp.headers().map().get("Content-Type"));
                     System.out.println("reponse text size:" + resp.body().length());
-                    System.out.println("response body:" + resp.body());
+                    return resp.body();
                 })
+                //.thenApply(jsonBodyAsString -> jsonBodyAsString.toUpperCase() )
+                .thenApply(jsonBodyAsString -> parseCatFactJsonStringAsRecord(jsonBodyAsString) )
+                .thenApply(bodyAsCatFactRecord -> new Dto.CatFact(bodyAsCatFactRecord.fact().toUpperCase(),bodyAsCatFactRecord.length()) )
+                .thenAccept(body -> { System.out.println("response body:" + body);})
                 .join(); // pour attendre la fin de l'execution asynchrone avant de terminer le main
     }
 }
