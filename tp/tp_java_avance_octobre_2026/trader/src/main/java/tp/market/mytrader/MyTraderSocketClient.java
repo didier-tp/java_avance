@@ -71,16 +71,22 @@ public class MyTraderSocketClient {
                 OutputStream out = socket.getOutputStream();
 
                 //send request to server:
+                long td =System.nanoTime();
+
 
                 StockListRequestMessage requeteMessage = new StockListRequestMessage();
                 requeteMessage.writeMessageBytes(out);
 
                 //Recuperer la réponse (liste d'actions)
                 int messageType = BytesMessage.readIntegerFromBytes(in);
-                System.out.println("messageType="+messageType);
+                //System.out.println("messageType="+messageType);
                 StockListResponseMessage responseMessage = new StockListResponseMessage();
                 responseMessage.readSizeAndDataMessageBytes(in);
                 List<Stock> listeActions = responseMessage.getStockList();
+                long tf =System.nanoTime();
+                long tempReponse = (tf - td);
+                System.out.println("tempReponse (via socket) en ns : " + tempReponse);
+                System.out.println("tempReponse (via socket) en ms : " + tempReponse/ 1000000);
                 System.out.println("listeActions="+listeActions);
 
             } catch (IOException e) {

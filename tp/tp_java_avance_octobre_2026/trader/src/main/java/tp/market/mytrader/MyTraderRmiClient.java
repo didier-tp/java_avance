@@ -26,7 +26,12 @@ public class MyTraderRmiClient {
             StockRmiApi stockRmiApi = myMarket.stockApi();
             Stock actionBnp = stockRmiApi.getStock("BNP.PA");
             System.out.println("actionBnp="+actionBnp);
+            long td =System.nanoTime();
             List<Stock> listeActions = stockRmiApi.getCurrentStockList();
+            long tf =System.nanoTime();
+            long tempReponse = (tf - td);
+            System.out.println("tempReponse (via rmi) en ns : " + tempReponse);
+            System.out.println("tempReponse (via rmi) en ms : " + tempReponse/ 1000000);
             System.out.println("listeActions="+listeActions);
 
         } catch (RemoteException e) {

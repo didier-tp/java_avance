@@ -1,0 +1,83 @@
+package tp.atomic;
+
+import java.util.List;
+import java.util.stream.IntStream;
+
+public class SyncWithoutAtomicApp {
+
+    public static class ValuesAndStats{
+        public int[] subvalues = { 1 , 2 , 3 , 1, 2 , 3, 1 ,2 ,3 }; //sous tableau de 9 éléments avec moyenne de 2
+        public int[] values; //tableau complet avec 1000 répétition du sous tableau --> moyenne attendue = 2
+        public long somme = 0;
+        public ValuesAndStats(){
+            int n = subvalues.length; //9 ou ...
+            this.values = new int[n * 1000];
+            for(int i=0;i<1000;i++){
+                for(int j=0;j<n;j++){
+                    int k = i*n+j;
+                    this.values[k]=this.subvalues[j];
+                }
+            }
+        }
+    }
+
+
+    public static class PartialSumTask implements Runnable{
+        private ValuesAndStats valuesAndStats;
+        private int firstIndex;
+        private int lastExclusiseIndex;
+
+        public PartialSumTask(ValuesAndStats valuesAndStats,int firstIndex,int lastExclusiseIndex){
+            this.firstIndex=firstIndex;
+            this.lastExclusiseIndex=lastExclusiseIndex;
+            this.valuesAndStats = valuesAndStats;
+        }
+
+        public void run_v1(){
+            for(int i=firstIndex;i<lastExclusiseIndex;i++){
+                synchronized(valuesAndStats) {
+                    valuesAndStats.somme += valuesAndStats.values[i];
+                }
+            }
+        }
+
+        public void run(){
+            int subSomme = 0;
+            IntStream.range(firstIndex,lastExclusiseIndex)
+                    .peek(i -> {
+                        //subSomme += valuesAndStats.values[i]; //cannot compile : Variable used in lambda expression should be final or effectively final
+                    })
+                    .forEach( i -> {
+                            synchronized (valuesAndStats) {
+                            valuesAndStats.somme += valuesAndStats.values[i];
+                           }
+                     });
+            System.out.println("subSomme="+subSomme);
+        }
+    }
+
+    public static void main(String[] args) {
+        System.out.println("SyncWithoutAtomicApp");
+        try {
+            long td =System.nanoTime();
+            ValuesAndStats valuesAndStats = new ValuesAndStats();
+            Thread t1 = Thread.ofVirtual().start(new PartialSumTask(valuesAndStats,0,3000));
+            Thread t2 = Thread.ofVirtual().start(new PartialSumTask(valuesAndStats,3000,6000));
+            Thread t3 = Thread.ofVirtual().start(new PartialSumTask(valuesAndStats,6000,9000));
+            t1.join();
+            t2.join();
+            t3.join();
+            int nbValues = valuesAndStats.values.length;
+            double average = valuesAndStats.somme / nbValues;
+            long tf =System.nanoTime();
+            long tempCalcul = (tf - td);
+            System.out.println("nbValues="+nbValues);
+            System.out.println("temps de calcul  en ns : " + tempCalcul);
+            System.out.println("temps de calcul en ms : " + tempCalcul/ 1000000);
+            System.out.println("average="+average); //sans aucune synchronisation , average = 2.0 ou 1.0 ou .... pas fiable
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+}
