@@ -16,5 +16,12 @@ public class MyOrderCollectorSocketTask implements Runnable {
     public void run() {
        // à coder librement en Tp
         System.out.println("MyOrderCollectorSocketTask.run");
+
+        //phase 1 du Tp :
+        //recevoir requete ultra simple "jour" ou "mois"
+        //et répondre  "mercredi" ou "octobre"
+
+        //phase 2 du Tp
+        //demande de liste d'actions , ...
     }
 }
