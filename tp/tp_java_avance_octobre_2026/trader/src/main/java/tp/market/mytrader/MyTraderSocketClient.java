@@ -1,5 +1,9 @@
 package tp.market.mytrader;
 
+import tp.market.message.StockListRequestMessage;
+import tp.market.message.StockListResponseMessage;
+import tp.market.message.TradingMessage;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,7 +29,8 @@ public class MyTraderSocketClient {
             throw new RuntimeException(e);
         }
         try (Socket socket = new Socket(serveur, port)) {
-            send_jour_message(socket);
+            //send_jour_message(socket);
+            send_stockList_message(socket);
         } catch (Exception e) {
             e.printStackTrace();
         } //try with auto_closeable resource=socket .
@@ -47,7 +52,7 @@ public class MyTraderSocketClient {
                 System.out.println("request 'jour' was sent ");
                 //waiting & retreive response:
                Scanner scanner = new Scanner(in);
-               String reponseSimple = scanner.next();
+               String reponseSimple = scanner.nextLine();
                 System.out.println("reponseSimple="+reponseSimple);
 
             } catch (IOException e) {
@@ -57,5 +62,23 @@ public class MyTraderSocketClient {
 
         //phase 2 du Tp
         //demande de liste d'actions , ...
+        public static void send_stockList_message(Socket socket){
+            try {
+                InputStream in = socket.getInputStream();
+                OutputStream out = socket.getOutputStream();
+
+                //send request to server:
+
+                StockListRequestMessage requeteMessage = new StockListRequestMessage();
+                requeteMessage.writeMessageBytes(out);
+
+                //Recuperer la réponse (liste d'actions)
+                StockListResponseMessage responseMessage = new StockListResponseMessage();
+                responseMessage.getStockList();
+
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 }
