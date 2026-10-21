@@ -1,5 +1,7 @@
 package tp.market.mytrader;
 
+import tp.market.core.model.Stock;
+import tp.market.message.BytesMessage;
 import tp.market.message.StockListRequestMessage;
 import tp.market.message.StockListResponseMessage;
 import tp.market.message.TradingMessage;
@@ -11,6 +13,7 @@ import java.io.PrintStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.List;
 import java.util.Scanner;
 
 public class MyTraderSocketClient {
@@ -73,8 +76,12 @@ public class MyTraderSocketClient {
                 requeteMessage.writeMessageBytes(out);
 
                 //Recuperer la réponse (liste d'actions)
+                int messageType = BytesMessage.readIntegerFromBytes(in);
+                System.out.println("messageType="+messageType);
                 StockListResponseMessage responseMessage = new StockListResponseMessage();
-                responseMessage.getStockList();
+                responseMessage.readSizeAndDataMessageBytes(in);
+                List<Stock> listeActions = responseMessage.getStockList();
+                System.out.println("listeActions="+listeActions);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);
