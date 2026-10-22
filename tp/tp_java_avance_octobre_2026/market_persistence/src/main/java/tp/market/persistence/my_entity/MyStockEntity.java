@@ -25,11 +25,10 @@ public class MyStockEntity {
     @Id
     private String symbol;//ex: OR.PA
 
-    @Column(name="current_quote")
+    @Column(name = "current_quote")
     private double currentQuote; //ex: 348.25 le 7avril2026 à 17h30
 
-    @OneToMany(mappedBy = "stock")
-    private List<MyStockExchangeEntity> exchanges;
+
 
     private Long number;
 

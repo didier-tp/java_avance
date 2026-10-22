@@ -16,11 +16,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @Slf4j
 public class TestMyStockDAO {
 
-    private static MyStockDAO stockDAO;
+    private static MyStockDAO stockDAO; //à tester
 
     @BeforeAll
     public static void initStockDao(){
-        MyJpaUtil.setHbm2ddlAuto(true);
+        MyJpaUtil.setHbm2ddlAuto(true);  //Hbm2ddlAuto=true en (debut) developpement , surtout pas en production
         stockDAO=new MyStockDaoJpa();
         MyDatabaseUtil.reInitDataSet(stockDAO); //reinit database content with cac40 stocks
     }
@@ -63,6 +63,7 @@ public class TestMyStockDAO {
         stockDAO.deleteById(pk);
         MyStockEntity sRelu3 = stockDAO.findById(pk);
         assertNull(sRelu3);
+
     }
 
 
