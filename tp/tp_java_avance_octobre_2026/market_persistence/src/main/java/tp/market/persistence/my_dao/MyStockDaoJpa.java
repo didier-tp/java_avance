@@ -33,6 +33,7 @@ public class MyStockDaoJpa extends GenericDaoJpa<MyStockEntity,String> implement
                         MyStockEntity.class).setParameter("stockId" , stockId).getSingleResult()
         );
         */
+
         //variante  via entityGraph pages 156,157
         return (MyStockEntity) MyJpaUtil.execInTransaction(entityManager -> {
                        EntityGraph entityGraph = entityManager.getEntityGraph("entity-graph-stock-exchanges");
