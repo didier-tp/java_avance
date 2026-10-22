@@ -19,7 +19,7 @@ public class MyStockDaoJpa extends GenericDaoJpa<MyStockEntity,String> implement
         return (List<MyStockEntity>)
                 MyJpaUtil.execInTransaction(entityManager ->
                         entityManager.createQuery("SELECT s FROM MyStockEntity s WHERE s.currentQuote > :coursMini" ,
-                                StockEntity.class).setParameter("coursMini" , minimumQuote).getResultList()
+                                MyStockEntity.class).setParameter("coursMini" , minimumQuote).getResultList()
                 );
     }
 

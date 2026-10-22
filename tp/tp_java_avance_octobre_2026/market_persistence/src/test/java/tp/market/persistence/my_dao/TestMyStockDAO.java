@@ -25,6 +25,16 @@ public class TestMyStockDAO {
         MyDatabaseUtil.reInitDataSet(stockDAO); //reinit database content with cac40 stocks
     }
 
+
+    @Test
+    public void testFindByQuoteMini(){
+        log.info("testFindByQuoteMini");
+        //appeler .findByQuoteMini() sur le dao
+        List<MyStockEntity> listeActions =  this.stockDAO.findByQuoteMini(300.0);
+        log.info("listeActions avec quoteMini=300 : " + listeActions);
+        //afficher le résultat via log.info()
+        assertTrue(listeActions.size()>=3); //au moins 3 dans le jeux de données initialisé par @BeforeAll et  MyDatabaseUtil.reInitDataSet()
+    }
     @Test
     public void testFindAllStock(){
         //à coder en TP
