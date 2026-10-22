@@ -18,7 +18,7 @@ public class MyStockDaoJpa extends GenericDaoJpa<MyStockEntity,String> implement
     public List<MyStockEntity> findByQuoteMini(double minimumQuote) {
         return (List<MyStockEntity>)
                 MyJpaUtil.execInTransaction(entityManager ->
-                        entityManager.createQuery("SELECT s FROM StockEntity s WHERE s.currentQuote > :coursMini" ,
+                        entityManager.createQuery("SELECT s FROM MyStockEntity s WHERE s.currentQuote > :coursMini" ,
                                 StockEntity.class).setParameter("coursMini" , minimumQuote).getResultList()
                 );
     }
