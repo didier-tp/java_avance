@@ -54,10 +54,9 @@ public class TestMyStockDAO {
 
         MyStockEntity stockEntityReluAvecEchanges = stockDAO.findByIdWithExchanges("S2222");
         assertEquals("Abc",stockEntityReluAvecEchanges.getName());
-        /*
+
         assertTrue(stockEntityReluAvecEchanges.getExchanges().size()==2);
         log.info("echanges pour s2222: " + stockEntityReluAvecEchanges.getExchanges());
-         */
     }
 
     @Test
