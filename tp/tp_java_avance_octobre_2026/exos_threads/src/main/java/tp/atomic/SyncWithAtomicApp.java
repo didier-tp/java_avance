@@ -34,14 +34,14 @@ public class SyncWithAtomicApp {
             this.valuesAndStats = valuesAndStats;
         }
 
-        public void run_v1(){
+        public void run(){
             for(int i=firstIndex;i<lastExclusiseIndex;i++){
                    // valuesAndStats.somme += valuesAndStats.values[i];
                 valuesAndStats.somme.getAndAdd(valuesAndStats.values[i]); //atomic incrementation or addition --> threadSafe (no need of syncrhonized )
             }
         }
 
-        public void run(){
+        public void run_v2(){
             AtomicInteger subSomme = new AtomicInteger();
             IntStream.range(firstIndex,lastExclusiseIndex)
                     .peek(i -> {
@@ -59,12 +59,14 @@ public class SyncWithAtomicApp {
         try {
             long td =System.nanoTime();
             ValuesAndStats valuesAndStats = new ValuesAndStats();
-            Thread t1 = Thread.ofVirtual().start(new PartialSumTask(valuesAndStats,0,3000));
-            Thread t2 = Thread.ofVirtual().start(new PartialSumTask(valuesAndStats,3000,6000));
-            Thread t3 = Thread.ofVirtual().start(new PartialSumTask(valuesAndStats,6000,9000));
-            t1.join();
-            t2.join();
-            t3.join();
+            Thread t1 = Thread.ofVirtual().unstarted(new PartialSumTask(valuesAndStats,0,1500));
+            Thread t2 = Thread.ofVirtual().unstarted(new PartialSumTask(valuesAndStats,1500,3000));
+            Thread t3 = Thread.ofVirtual().unstarted(new PartialSumTask(valuesAndStats,3000,4500));
+            Thread t4 = Thread.ofVirtual().unstarted(new PartialSumTask(valuesAndStats,4500,6000));
+            Thread t5 = Thread.ofVirtual().unstarted(new PartialSumTask(valuesAndStats,6000,7500));
+            Thread t6 = Thread.ofVirtual().unstarted(new PartialSumTask(valuesAndStats,7500,9000));
+            t1.start();t2.start();t3.start();t4.start(); t5.start(); t6.start();
+            t1.join(); t2.join(); t3.join();t4.join(); t5.join(); t6.join();
             int nbValues = valuesAndStats.values.length;
             double average = valuesAndStats.somme.get() / nbValues;
             long tf =System.nanoTime();
