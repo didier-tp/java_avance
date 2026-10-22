@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 public class TestMyStockExchangeDAO {
 
-    private static MyStockExchangeDAO stockExchangeDAO;
-    private static MyStockDAO stockDAO;
+    private static MyStockExchangeDAO stockExchangeDAO; //à tester
+    private static MyStockDAO stockDAO; //pour aide à tester
 
     @BeforeAll
     public static void initDao(){

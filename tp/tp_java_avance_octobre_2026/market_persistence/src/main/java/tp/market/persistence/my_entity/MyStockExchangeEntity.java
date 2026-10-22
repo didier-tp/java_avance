@@ -23,7 +23,7 @@ public class MyStockExchangeEntity {
 
    //lien n-1 , ...
     @ManyToOne
-    @JoinColumn(name="stock_id")
+    @JoinColumn(name="id_action") //ou name="id_stock" (fk : foreign key)
     private MyStockEntity stock;
 
     private double price;

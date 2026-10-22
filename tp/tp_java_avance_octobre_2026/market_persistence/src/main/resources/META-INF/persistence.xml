@@ -11,9 +11,8 @@
 		<!-- indiquer liste des classes avec @Entity (facultatif avec Spring ou autre) -->
 
 		<class>tp.market.persistence.my_entity.MyStockEntity</class>
-		<!--
         <class>tp.market.persistence.my_entity.MyStockExchangeEntity</class>
-        -->
+
 		<!--
         <class>tp.market.persistence.entity.StockEntity</class>
         <class>tp.market.persistence.entity.StockExchangeEntity</class>
