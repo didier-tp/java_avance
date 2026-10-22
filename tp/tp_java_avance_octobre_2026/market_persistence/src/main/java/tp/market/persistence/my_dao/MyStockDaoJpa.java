@@ -23,5 +23,14 @@ public class MyStockDaoJpa extends GenericDaoJpa<MyStockEntity,String> implement
                 );
     }
 
+    @Override
+    public MyStockEntity findByIdWithExchanges(String stockId) {
+        //à peaufiner/améliorer en Tp (via le mot clef fetch page 134 ou via entityGraph ....)
+        return (MyStockEntity) MyJpaUtil.execInTransaction(entityManager ->
+                entityManager.createQuery("SELECT s FROM MyStockEntity s WHERE s.symbol = :stockId" ,
+                        MyStockEntity.class).setParameter("stockId" , stockId).getSingleResult()
+        );
+    }
+
     //plus méthodes complémentaires des futurs Tps ...
 }
