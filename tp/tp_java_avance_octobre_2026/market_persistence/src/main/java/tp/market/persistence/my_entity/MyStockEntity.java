@@ -29,7 +29,7 @@ public class MyStockEntity {
     @Column(name = "current_quote")
     private double currentQuote; //ex: 348.25 le 7avril2026 à 17h30
 
-    @OneToMany(mappedBy = "stock") //mappedBy = "nom_java relation inverse qui est prefixée par @ManyToOne
+    @OneToMany(mappedBy = "stock",cascade={CascadeType.REMOVE,CascadeType.PERSIST}) //mappedBy = "nom_java relation inverse qui est prefixée par @ManyToOne
     private List<MyStockExchangeEntity> exchanges = new ArrayList<>();
 
     private Long number;

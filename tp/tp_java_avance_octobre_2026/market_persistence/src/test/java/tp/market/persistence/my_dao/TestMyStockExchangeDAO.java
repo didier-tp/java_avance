@@ -35,12 +35,15 @@ public class TestMyStockExchangeDAO {
 
         //créer et sauvegarder une première action (ex: Xyz)
         MyStockEntity s1 = new MyStockEntity("Xyz","S1111","FR0000120321",342.25);
-        s1 =this.stockDAO.saveNew(s1);
+
         //créer et sauvegarder deux nouvelles instances de  MyStockExchangeEntity rattachées à la première action
         MyStockExchangeEntity se1a = new MyStockExchangeEntity(s1, 345.7, 4, "buyer1", "seller_2");
         MyStockExchangeEntity se1b = new MyStockExchangeEntity(s1, 346.7, 10, "buyer2", "seller_6");
-        this.stockExchangeDAO.saveNew(se1a);
-        this.stockExchangeDAO.saveNew(se1b);
+        s1.getExchanges().add(se1a); //relier se1a et se1b à s1 du coté @OneToMany pour les besoins de la cascade
+        s1.getExchanges().add(se1b);
+        s1 =this.stockDAO.saveNew(s1); //save en cascade avec CascadeType.PERSIST sur  @OneToMany
+        //this.stockExchangeDAO.saveNew(se1a);
+        //this.stockExchangeDAO.saveNew(se1b);
 
         //créer et sauvegarder une deuxième action (ex: Abc)
         MyStockEntity s2 = new MyStockEntity("Abc","S2222","FR0000120351",642.25);
@@ -57,6 +60,8 @@ public class TestMyStockExchangeDAO {
         log.info("exchangesS1="+exchangesS1);
         //verifier la taille (==2) via un assertTrue(...) approprié
         assertTrue(exchangesS1.size()==2);
+
+        this.stockDAO.deleteById(s2.getSymbol() /* "S2222" */);
     }
 
 
