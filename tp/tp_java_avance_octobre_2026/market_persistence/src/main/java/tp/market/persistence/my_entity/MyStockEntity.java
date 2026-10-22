@@ -15,6 +15,11 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="my_stock")
+@NamedEntityGraph(name = "entity-graph-stock-exchanges",
+        attributeNodes = {
+                @NamedAttributeNode(value="exchanges")
+        }
+)
 public class MyStockEntity {
 
     @Column(length=24)
