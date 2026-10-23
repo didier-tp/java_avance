@@ -1,47 +1,56 @@
 package tp.data;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-	
 
+//@Slf4j
 public class TestPersonne {
-	
+
 	private static Logger logger = LoggerFactory.getLogger(TestPersonne.class);
-	
+
 	private Personne personne; //à tester
-	
-	//...
+
+	@BeforeEach()
 	public void init() {
 		personne = new Personne(1L,"jean" , "Bon" , 67.2 /*cm*/ );
 	}
-	
-	//...
+
+	@Test
 	public void test10cmDePlus() {
-		//après appel de .grandir(10);
-		//tester si nouvelle taille = 77.2 à 0.5cm près
+		personne.grandir(10);
+		logger.trace("avec 10cm de plus, personne=" + personne);
+		assertEquals(77.2, personne.getTaille(),0.5);
 	}
-	
-	//...
+
+	@Test
 	public void test5cmDePlus() {
-		//après appel de .grandir(5);
-		//tester si nouvelle taille = 72.2 à 0.5cm près
+		personne.grandir(5);
+		logger.trace("avec 5cm de plus, personne=" + personne);
+		assertEquals(72.2, personne.getTaille(),0.5);
 	}
-	
-	//...
+
+	@Test
 	public void testChangementDeNom() {
 		String nomInitial = personne.getNom();//"Bon"
-		//.... //changement de nom avec nouveauNom = "Aimare"
+		personne.setNom("Aimare");//changement de nom
 		String nouveauNom = personne.getNom();
 		logger.trace("personne avec nouveau nom=" + personne);
-		//.... //vérifier nouveauNom pas null
-		//.... //vérifier nouveauNom valant "Aimare"
-		//.... //vérifier nouveauNom différent de nomInitial
-		//.... //vérifier taille toujours positive
+		assertNotNull(nouveauNom); //vérifier nouveauNom pas null
+		assertEquals("Aimare", nouveauNom);//vérifier nouveauNom valant "Aimare"
+		assertNotEquals(nomInitial, nouveauNom);//vérifier nouveauNom différent de nomInitial
+		assertTrue(personne.getTaille()>=0);//vérifier taille toujours positive
 	}
-	
+
 	@AfterEach
-    public void tearDown() {
+	public void tearDown() {
 		logger.trace("fin d'un test ...");
 	}
 

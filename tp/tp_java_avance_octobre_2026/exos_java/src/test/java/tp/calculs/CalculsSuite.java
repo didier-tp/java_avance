@@ -12,6 +12,8 @@ déclenche TestCalculsSimples , TestEmptySerie et TestSerie
 ---
 utiliser @Suite et @SelectClasses
  */
-
+@Suite
+@SelectClasses({TestCalculsSimples.class , TestEmptySerie.class , TestSerie.class})
 public class CalculsSuite {
+    //déclenchable via mvn -Dtest=CalculsSuite test depuis un script  .bat/.sh
 }

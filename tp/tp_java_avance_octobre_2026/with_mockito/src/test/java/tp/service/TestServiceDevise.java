@@ -6,10 +6,12 @@ import static org.mockito.ArgumentMatchers.anyString;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -17,8 +19,10 @@ import tp.dao.DaoDevise;
 import tp.entity.Devise;
 import tp.exception.NotFoundException;
 
+import java.util.ArrayList;
+
 //@RunWith(MockitoJUnitRunner.class) //for JUnit 4
-//@ExtendWith(MockitoExtension.class) //for JUnit 5
+@ExtendWith(MockitoExtension.class) //for JUnit 5
 public class TestServiceDevise {
 
 	//QUOI, des Mocks presque partout, mais de qui se moque-t-on ?
@@ -48,14 +52,14 @@ public class TestServiceDevise {
 		@BeforeEach
 		public void reInitMock() {
 			//Mockito.initMocks(this); in old Junit 4
-			MockitoAnnotations.openMocks(this); //with JUnit5/Jupiter
+			//MockitoAnnotations.openMocks(this); //with JUnit5/Jupiter
 			// MockitoAnnotations.openMocks(this) permet de créer des instances de chaque mock 
 			//   préfixé par @Mock au sein de this .
 			//   ce qui revient au même que d'écrire :
-			//      this.daoDeviseMock = Mockito.mock(DaoDevise.class);
+			//this.daoDeviseMock = Mockito.mock(DaoDevise.class);
 			//      this.mock2=Mockito.mock(Interface_ouClasse2.class);
 			//      s'il n'y avait pas d'utilisation de @Mock 
-			 //     this.serviceDevise = new ServiceDeviseImpl(this.daoDeviseMock);
+			 //this.serviceDevise = new ServiceDeviseImpl(this.daoDeviseMock);
 		}
 	
 		
@@ -70,6 +74,8 @@ public class TestServiceDevise {
 			      	 .thenReturn(new Devise("EUR","Euro",1.0));
 			Mockito.when(daoDeviseMock.findByCode(codeDeviseCible))
 		          		 .thenReturn(new Devise("USD","Dollar",1.1));
+			/*Mockito.lenient().when(daoDeviseMock.findByCode("GBP"))
+					.thenReturn(new Devise("GBP","Livre",0.9));*/
 			//2.appel de la méthode convertir sur le service et test retour
 			montantConverti = serviceDevise.convertir(montant, codeDeviseSource,codeDeviseCible);
 			logger.debug("montantConverti="+montantConverti);
