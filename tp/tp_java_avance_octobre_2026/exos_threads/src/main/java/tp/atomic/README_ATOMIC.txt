@@ -8,7 +8,7 @@ Principaux intérêts:
  modification et écriture sont atomiques (indivisibles).
  Elle évite ainsi les race conditions (conditions de course).
 
-• Meilleures performances : Contrairement à l'utilisation du mot-clé synchronized qui bloque les threads concurrents,
+• Meilleures performances possibles: Contrairement à l'utilisation du mot-clé synchronized qui bloque les threads concurrents,
  AtomicLong s'appuie en interne sur des instructions matérielles de type CAS (Compare-And-Swap) via la machine virtuelle,
   ce qui offre une exécution beaucoup plus rapide et fluide en cas de forte concurrence.
 

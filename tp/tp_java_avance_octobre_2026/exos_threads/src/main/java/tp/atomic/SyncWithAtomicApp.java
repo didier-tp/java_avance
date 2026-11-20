@@ -45,7 +45,7 @@ public class SyncWithAtomicApp {
             AtomicInteger subSomme = new AtomicInteger();
             IntStream.range(firstIndex,lastExclusiseIndex)
                     .peek(i -> {
-                        subSomme.addAndGet(valuesAndStats.values[i]); //cannot compile : Variable used in lambda expression should be final or effectively final
+                        subSomme.addAndGet(valuesAndStats.values[i]);
                     })
                     .forEach( i -> {
                         valuesAndStats.somme.getAndAdd(valuesAndStats.values[i]);

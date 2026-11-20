@@ -43,15 +43,19 @@ public class SyncWithoutAtomicApp {
 
         public void run_v2(){
             int subSomme = 0;
+            final int[] subSommes = new int[1];
+            subSommes[0]=0;
             IntStream.range(firstIndex,lastExclusiseIndex)
                     .peek(i -> {
                         //subSomme += valuesAndStats.values[i]; //cannot compile : Variable used in lambda expression should be final or effectively final
+                        subSommes[0] += valuesAndStats.values[i];
                     })
                     .forEach( i -> {
                             synchronized (valuesAndStats) {
                             valuesAndStats.somme += valuesAndStats.values[i];
                            }
                      });
+            subSomme = subSommes[0];
             System.out.println("subSomme="+subSomme);
         }
     }

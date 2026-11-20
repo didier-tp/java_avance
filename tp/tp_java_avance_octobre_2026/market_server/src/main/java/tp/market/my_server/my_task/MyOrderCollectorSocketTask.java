@@ -3,15 +3,9 @@ package tp.market.my_server.my_task;
 import lombok.extern.slf4j.Slf4j;
 import tp.market.core.model.MyStockMarket;
 import tp.market.core.model.Stock;
-import tp.market.message.BytesMessage;
-import tp.market.message.StockListRequestMessage;
-import tp.market.message.StockListResponseMessage;
-import tp.market.message.TradingMessage;
+import tp.market.message.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,27 +23,34 @@ public class MyOrderCollectorSocketTask implements Runnable {
     public void run() {
        // à coder librement en Tp
         System.out.println("MyOrderCollectorSocketTask.run");
-      /*
+
+        /*
         //phase 1 du Tp :
         //recevoir requete ultra simple "jour" ou "mois"
-        //et répondre  "mercredi" ou "octobre"
+        //et répondre  "mercredi" ou "octobre" ou ...
         try {
             InputStream in = socketClient.getInputStream();
             OutputStream out = socketClient.getOutputStream();
+            DataInputStream dataIn = new DataInputStream(in);
+            DataOutputStream dataOut = new DataOutputStream(out);
 
             //receive simple request :
-            Scanner scanner = new Scanner(in);
-            String requeteSimple = scanner.nextLine();
-            System.out.println("requeteSimple="+requeteSimple);
+            String requestMessage = null;
+            try {
+                requestMessage = MySimpleMessage.readSimpleMessage(dataIn);
+            } catch (EndReadLoopException e) {
+                //endLoop=true;
+            }
 
             //send simple response:
-            PrintStream ps = new PrintStream(out);
-            if(requeteSimple.equals("jour"))
-                 ps.println("mercredi");
-            else if(requeteSimple.equals("mois"))
-                ps.println("octobre");
-          else ps.println("????");
-          //ps.flush();
+            String responseMsg = "???";
+            if(requestMessage.equals("jour"))
+                responseMsg = "mercredi ou autre";
+            else if(requestMessage.equals("mois"))
+                responseMsg = "novembre ou autre";
+
+            MySimpleMessage.writeSimpleMessage(dataOut,responseMsg);
+            System.out.println("response sent : "+responseMsg);
 
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -62,21 +63,25 @@ public class MyOrderCollectorSocketTask implements Runnable {
         try {
             InputStream in = socketClient.getInputStream();
             OutputStream out = socketClient.getOutputStream();
+            DataInputStream dataIn = new DataInputStream(in);
+            DataOutputStream dataOut = new DataOutputStream(out);
 
-            //receive  request :
-            int messageType = BytesMessage.readIntegerFromBytes(in);
-            System.out.println("messageType="+messageType);
-            switch (messageType){
-                case TradingMessage.STOCK_LIST_REQUEST_MESSAGE_TYPE :
-                    StockListRequestMessage stockListRequestMessage = new StockListRequestMessage();
-                    stockListRequestMessage.readSizeAndDataMessageBytes(in);
-
+            //receive simple request :
+            String requestMessage = null;
+            try {
+                requestMessage = MySimpleMessage.readSimpleMessage(dataIn);
+            } catch (EndReadLoopException e) {
+                //endLoop=true;
+            }
+            switch (requestMessage){
+                case MyTradingMessage.STOCK_LIST_REQUEST_MESSAGE :
                     List<Stock> listeActions = new ArrayList<>(MyStockMarket.getInstance().getStockMap().values());
-                    StockListResponseMessage stockListResponseMessage = new StockListResponseMessage(listeActions);
-                    stockListResponseMessage.writeMessageBytes(out);
+                    MyMessageWithLengthAndDataBuffer.writeMessageWithSerializedData(dataOut,
+                            MyTradingMessage.STOCK_LIST_RESPONSE_MESSAGE,
+                            listeActions);
+                    System.out.println("STOCK_LIST_RESPONSE_MESSAGE sent with nbActions="+listeActions.size());
                     break;
             }
-            //send  response:
 
 
         } catch (IOException e) {

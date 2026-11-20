@@ -1,20 +1,13 @@
 package tp.market.mytrader;
 
 import tp.market.core.model.Stock;
-import tp.market.message.BytesMessage;
-import tp.market.message.StockListRequestMessage;
-import tp.market.message.StockListResponseMessage;
-import tp.market.message.TradingMessage;
+import tp.market.message.*;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.List;
-import java.util.Scanner;
 
 public class MyTraderSocketClient {
 
@@ -32,8 +25,12 @@ public class MyTraderSocketClient {
             throw new RuntimeException(e);
         }
         try (Socket socket = new Socket(serveur, port)) {
-            //send_jour_message(socket);
-            send_stockList_message(socket);
+            InputStream in = socket.getInputStream();
+            DataInputStream dataIn = new DataInputStream(in);
+            OutputStream out = socket.getOutputStream();
+            DataOutputStream dataOut = new DataOutputStream(out);
+            //send_jour_message(dataIn,dataOut);
+            send_stockList_message(dataIn,dataOut);
         } catch (Exception e) {
             e.printStackTrace();
         } //try with auto_closeable resource=socket .
@@ -43,53 +40,38 @@ public class MyTraderSocketClient {
         //envoyer requete ultra simple "jour" ou "mois"
         //et afficher réponse simple du serveur "mercredi" ou "octobre"
 
-        public static void send_jour_message(Socket socket){
-            try {
-                InputStream in = socket.getInputStream();
-                OutputStream out = socket.getOutputStream();
-
-                //send request to server:
-                PrintStream ps = new PrintStream(out);
-                ps.println("jour");
-                //ps.flush();
-                System.out.println("request 'jour' was sent ");
-                //waiting & retreive response:
-               Scanner scanner = new Scanner(in);
-               String reponseSimple = scanner.nextLine();
-                System.out.println("reponseSimple="+reponseSimple);
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+        public static void send_jour_message(DataInputStream dataIn, DataOutputStream dataOut){
+            //send request to server:
+            MySimpleMessage.writeSimpleMessage(dataOut,"jour");
+            System.out.println("jour request sent , waiting for response ...");
+            //waiting & retreive response:
+            String jourResponse = MySimpleMessage.readSimpleMessage(dataIn);
+            System.out.println("responseMessage (jour)="+jourResponse);
         }
 
         //phase 2 du Tp
         //demande de liste d'actions , ...
-        public static void send_stockList_message(Socket socket){
+        public static void send_stockList_message(DataInputStream dataIn, DataOutputStream dataOut){
             try {
-                InputStream in = socket.getInputStream();
-                OutputStream out = socket.getOutputStream();
-
                 //send request to server:
                 long td =System.nanoTime();
 
-
-                StockListRequestMessage requeteMessage = new StockListRequestMessage();
-                requeteMessage.writeMessageBytes(out);
+                MySimpleMessage.writeSimpleMessage(dataOut,MyTradingMessage.STOCK_LIST_REQUEST_MESSAGE);
+                System.out.println("stockList request sent , waiting for response ...");
 
                 //Recuperer la réponse (liste d'actions)
-                int messageType = BytesMessage.readIntegerFromBytes(in);
-                //System.out.println("messageType="+messageType);
-                StockListResponseMessage responseMessage = new StockListResponseMessage();
-                responseMessage.readSizeAndDataMessageBytes(in);
-                List<Stock> listeActions = responseMessage.getStockList();
+                String responseMessageType=MySimpleMessage.readSimpleMessage(dataIn);
+                System.out.println("received response type:" + responseMessageType);
+                //byte[] data = MyMessageWithLengthAndDataBuffer.readMessageData(dataIn);
+                //List<Stock> listeActions = (List<Stock>) MySerializableUtil.deserializeData(data);
+                List<Stock> listeActions = (List<Stock>)  MyMessageWithLengthAndDataBuffer.readMessageDataObject(dataIn);
                 long tf =System.nanoTime();
                 long tempReponse = (tf - td);
                 System.out.println("tempReponse (via socket) en ns : " + tempReponse);
                 System.out.println("tempReponse (via socket) en ms : " + tempReponse/ 1000000);
                 System.out.println("listeActions="+listeActions);
 
-            } catch (IOException e) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
