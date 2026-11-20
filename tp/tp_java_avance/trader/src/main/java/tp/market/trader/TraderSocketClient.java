@@ -1,14 +1,21 @@
 package tp.market.trader;
 
-import tp.market.message.*;
 import tp.market.core.model.Stock;
 import tp.market.core.model.TradingOrder;
 import tp.market.core.service.OrderService;
 import tp.market.core.service.OrderServiceImpl;
+import tp.market.message.MyMessageWithLengthAndDataBuffer;
+import tp.market.message.MySimpleMessage;
+import tp.market.message.MyTradingMessage;
 import tp.market.util.MyThreadUtil;
 
-import java.io.*;  import java.net.UnknownHostException;
-import java.net.InetAddress;     import java.net.Socket;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.InetAddress;
+import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.List;
 
 public class TraderSocketClient {
@@ -27,28 +34,30 @@ public class TraderSocketClient {
         try  (Socket socket = new Socket(serveur, port)){
             System.out.println("connected to serveur socket");
             InputStream in = socket.getInputStream();
+            DataInputStream dataIn = new DataInputStream(in);
             OutputStream out = socket.getOutputStream();
-            List<Stock> stockList = stockListRequestResponseMessage(out,in);
-            sendTradingOrderMessages(out,stockList);
+            DataOutputStream dataOut = new DataOutputStream(out);
+            List<Stock> stockList = stockListRequestResponseMessage(dataIn,dataOut);
+           sendTradingOrderMessages(dataOut,stockList);
         } catch (Exception e) {
             e.printStackTrace();
         } //try with auto_closeable resource=socket .
     }
 
-    static List<Stock> stockListRequestResponseMessage(OutputStream out, InputStream in){
-        StockListRequestMessage stockListRequestMessage = new StockListRequestMessage();
-        stockListRequestMessage.writeMessageBytes(out); System.out.println("stockListRequestMessage was sent");
-        //waiting , receive , display response:
-        int messageType = BytesMessage.readIntegerFromBytes(in);
-        System.out.println("StockList response message type=" + messageType);
-        StockListResponseMessage stockListResponseMessage = new StockListResponseMessage();
-        stockListResponseMessage.readSizeAndDataMessageBytes(in);
-        List<Stock> stockList = stockListResponseMessage.getStockList();
+    static List<Stock> stockListRequestResponseMessage(DataInputStream dataIn, DataOutputStream dataOut){
+        MySimpleMessage.writeSimpleMessage(dataOut,MyTradingMessage.STOCK_LIST_REQUEST_MESSAGE);
+        System.out.println("stockList request sent , waiting for response ...");
+
+        //Recuperer la réponse (liste d'actions)
+        String responseMessageType=MySimpleMessage.readSimpleMessage(dataIn);
+        System.out.println("received response type:" + responseMessageType);
+        List<Stock> stockList = (List<Stock>)  MyMessageWithLengthAndDataBuffer.readMessageDataObject(dataIn);
         System.out.println("stockList (from response)=" + stockList);
         return stockList;
     }
 
-    static void sendTradingOrderMessages(OutputStream out,List<Stock> stockList){
+
+    static void sendTradingOrderMessages(DataOutputStream dataOut,List<Stock> stockList){
         try {
             boolean stop=false;
             //TradingOrder tradingOrder = new TradingOrder(TradingOrder.OrderType.SALE,"OR.PA",349.0 , 20);
@@ -62,8 +71,7 @@ public class TraderSocketClient {
                 MyThreadUtil.pause(10); //10ms
                 TradingOrder tradingOrder = orderService.newRandomOrderWithTrendPercent(traderId, trendPct);
                 //send request to server:
-                TradingOrderMessage tradingOrderMessage = new TradingOrderMessage(tradingOrder);
-                tradingOrderMessage.writeMessageBytes(out);
+                MyMessageWithLengthAndDataBuffer.writeMessageWithSerializedData(dataOut,MyTradingMessage.ORDER_MESSAGE,tradingOrder);
                 if (n > 500) stop = true;
             }
             System.out.println("tradingOrders was sent , n="+n);
