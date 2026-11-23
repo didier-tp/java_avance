@@ -31,27 +31,40 @@ public class PhilosopherTaskWithDeadLockV2 implements Runnable {
 
     @Override
     public void run() {
-        while (true) {
-            System.out.println("Philosopher " + id + " is thinking...");
-            sleep(1);
+        try {
+            while (true) {
+                System.out.println("Philosopher " + id + " is thinking...");
+                sleep(1);
 
-            // Pick up left fork
-            forkLock[id].lock();
+                // Pick up left fork
+                //forkLock[id].lock();
+                if(forkLock[id].tryLock(5,TimeUnit.SECONDS)) {
 
-            // Pick up right fork
-            forkLock[(id + 1) % N].lock();
+                    // Pick up right fork
+                    if(forkLock[(id + 1) % N].tryLock(5,TimeUnit.SECONDS)) {
 
-            System.out.println("Philosopher " + id + " is eating...");
-            sleep(1);
+                        System.out.println("Philosopher " + id + " is eating (with 2 forks)");
+                        sleep(1);
 
-            // Put down left fork
-            forkLock[id].unlock();
+                        // Put down right fork
+                        forkLock[(id + 1) % N].unlock();
+                    }
+                    else{
+                        System.out.println("Philosopher " + id + " cannot eat , no right fork !!!");
+                    }
 
-            // Put down right fork
-            forkLock[(id + 1) % N].unlock();
+                    // Put down left fork
+                    forkLock[id].unlock();
 
+                }
+                else{
+                    System.out.println("Philosopher " + id + " cannot eat , no left fork !!!");
+                }
 
-            System.out.println("Philosopher " + id + " finished eating and put down forks.");
+                System.out.println("Philosopher " + id + " finished eating and put down forks.");
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
