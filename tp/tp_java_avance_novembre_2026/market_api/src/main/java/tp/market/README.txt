@@ -1,0 +1,1 @@
+plus tout le contenu du module market_model (dépendance indirecte)

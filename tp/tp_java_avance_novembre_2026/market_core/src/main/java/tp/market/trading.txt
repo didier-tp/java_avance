@@ -1,0 +1,53 @@
+order_book , ... ?
+https://www.fortuneo.fr/blog/carnet-d-ordres
+https://www.boursorama.com/pub/banque/nl/Les_ordres_de_Bourse-Le_Guide.pdf
+https://finance-heros.fr/carnet-ordre-bourse/
+
+préouverture (ex: 7h15-9h) : les ordres s'accumulent mais ne sont pas encore traités/exécutés
+séance boursière (ex: 9h-17h30) : les ordres sont confontés (offres/demandes) et s'exécutent en continu si les critères le permettent
+préclôture (ex: 17h30-17h35) : accumulation sans exécutions puis calcul d'un cours de clôture théorique
+fixing de clôture (ex: 17h35) : executions des dernières trandactions possibles (à ce cours) puis REJET (ou éventuel REPPORT) des ordres nons traités
+plus éventuel "trading at last" (avec limitations)
+
+=====
+execution des transactions pour les ordres à cours limité (prix d'achat maxi , prix de vente mini):
+exemple: si demande d'achat de 100 titres au prix maxi de 15.00
+         alors peut être 50 titres au prix actuel le plus bas à 14.80
+                       et 10 titres à 14.85 et 20 titres à 14.95 et 20 titres en attente d'offre (selon offre disponible)
+
+du coté offre , plus le prix est bas , plus ça part vite et si le prix est haut ça peut rester invendu
+====
+L’exécution des ordres se fait dans la logique de « premier arrivé, premier servi »
+===
+Le cours d'une action est régi par la loi de l'offre et de la demande:
+ à un instant donné, il est égal au prix auquel le plus grand nombre de titres pourra être échangé
+===
+pour certaines actions (avec beaucoup de liquidité/transactions) , le cours (recalculé en continu) peut varier toutes les 1s .
+======
+NYSE (Wall Street , NewYork ) : New York Stock Exchange
+NASDAQ  : entièrement informatisé
+TSE: Tokyo Stock Exchange
+SSE : Shanghai Stock Exchange
+SEHK : Hong Kong Stock Exchange
+SZSE : Shenzhen Stock Exchange
+LSE: London Stock Exchange
+Euronext (Euronext Stock Exchange: France , PaysBas, Belgique, ...)
+        .PA signifie Euronext/Paris
+....
+========
+quelques indices boursiers:
+CAC40 (Cotation Assistée en Continu) , 40 principales actions de Euronext/Paris
+Dow Jones : 30 principales actions des USA
+Nikkei 225 : 225 sociétés au Japon
+CSI 300 : 300 sociétés ( Shanghai et Shenzhen)
+======
+
+TPs avec threads,communications réseaux, etc , :
+* order_producer (op) : application qui émet des ordres (achats, ventes , annulation , ...)
+* virtual_market_place (market) : application responsable de gérer les transactions et les cours
+---
+phase 1 : ébauche market multi-threads (avec op_event simulés)
+phase 2 : communication réseau op/market
+phase 3 : market avec persistance
+phases 4,5 : visu graph ? , test jUnit, profiling, ...
+
