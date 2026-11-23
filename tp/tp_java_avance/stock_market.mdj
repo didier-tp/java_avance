@@ -4374,7 +4374,7 @@
 											"top": 351,
 											"width": 102.59716796875,
 											"height": 13,
-											"text": "BasicMarkerApp"
+											"text": "BasicMarketApp"
 										},
 										{
 											"_type": "LabelView",
@@ -6648,7 +6648,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "BasicMarkerApp",
+					"name": "BasicMarketApp",
 					"ownedElements": [
 						{
 							"_type": "UMLDependency",

@@ -7,7 +7,8 @@ public class CallableComputing implements Callable<String>{
 
 	@Override
 	public String call() throws Exception {
-		LongTask.simulateLongTask("long computing task (in background) ...", 5000);
+
+		LongTask.simulateLongTask("long computing task (in background) ...", (int)(5000 * Math.random()));
 		return String.valueOf(Math.sqrt(x));
 	}
 	
