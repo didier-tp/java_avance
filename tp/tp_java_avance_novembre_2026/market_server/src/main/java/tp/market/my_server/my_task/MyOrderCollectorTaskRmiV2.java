@@ -1,5 +1,10 @@
 package tp.market.my_server.my_task;
 
+import tp.market.my_server.my_rmi.MyMarketRmiImpl;
+
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+
 public class MyOrderCollectorTaskRmiV2 implements Runnable{
 
     private String traderId;
@@ -16,6 +21,21 @@ public class MyOrderCollectorTaskRmiV2 implements Runnable{
     public void run() {
         //à coder librement en Tp
         System.out.println("MyOrderCollectorTaskRmiV2.run");
+        try{
+        Registry rmiRegistry = LocateRegistry.createRegistry(1099);
+        System.out.println("demarrage du la partie RMI de <<MyBasicServerAppV2>> ...");
+        System.out.println("... creation et exportation de la factory <<myMarketRmi>> ");
+        MyMarketRmiImpl myMarketRmi = new MyMarketRmiImpl();
+        String chNom="myMarketRmi";
+        System.out.println("... enregistrement sous le nom "+chNom);
+        //Naming.rebind(chNom,myMarketRmi);
+        rmiRegistry.rebind(chNom,myMarketRmi);
+        System.out.println("... serveur initialise en attente des requetes");
+    }
+    catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 }
 
