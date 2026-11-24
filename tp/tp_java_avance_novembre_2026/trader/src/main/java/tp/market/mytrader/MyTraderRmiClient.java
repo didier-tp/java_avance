@@ -1,7 +1,9 @@
 package tp.market.mytrader;
 
 import tp.market.core.model.Stock;
+import tp.market.core.model.TradingOrder;
 import tp.market.rmi_api.MarketRemoteFactory;
+import tp.market.rmi_api.OrderRmiApi;
 import tp.market.rmi_api.StockRmiApi;
 
 import java.rmi.registry.LocateRegistry;
@@ -20,11 +22,14 @@ public class MyTraderRmiClient {
             Registry rmiRegistry = LocateRegistry.getRegistry(chHostname, 1099);
             MarketRemoteFactory myMarketRmi = (MarketRemoteFactory) rmiRegistry.lookup("myMarketRmi");
             System.out.println("connexion a la factory <<myMarketRmi>> effectuee .");
-            //access indirect à l'objet distant StockRmiApi depuis la factory:
+            //access indirect à l'objet distant StockRmiApi depuis la remote factory:
             StockRmiApi stockRmiApi =  myMarketRmi.stockApi();
             List<Stock> listeActions = stockRmiApi.getCurrentStockList();
             System.out.println("listeActions="+listeActions);
-            //...
+            //access indirect à l'objet distant OrderRmiApi depuis la remote factory:
+            OrderRmiApi orderRmi =  myMarketRmi.orderApi();
+            orderRmi.sendTradingOrder( new TradingOrder(TradingOrder.OrderType.SALE,"OR.PA",300.2,30));
+            orderRmi.sendTradingOrder( new TradingOrder(TradingOrder.OrderType.PURCHASE,"OR.PA",300.4,20));
 
         }catch(Exception ex){
             ex.printStackTrace();
