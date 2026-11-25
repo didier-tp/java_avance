@@ -18,8 +18,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @Slf4j
 public class TestMyStockExchangeDAO {
 
-    private static MyStockExchangeDAO stockExchangeDAO;
-    private static MyStockDAO stockDAO;
+    private static MyStockExchangeDAO stockExchangeDAO;  //à tester
+    private static MyStockDAO stockDAO; //aider à tester
 
     @BeforeAll
     public static void initDao(){
@@ -39,8 +39,20 @@ public class TestMyStockExchangeDAO {
         //créer et sauvegarder deux nouvelles instances de  MyStockExchangeEntity rattachées à la première action
         MyStockExchangeEntity se1a = new MyStockExchangeEntity(s1, 345.7, 4, "buyer1", "seller_2");
         MyStockExchangeEntity se1b = new MyStockExchangeEntity(s1, 346.7, 10, "buyer2", "seller_6");
+
+        s1.getExchanges().add(se1a); s1.getExchanges().add(se1b);
+        //this.stockDAO.update(s1);
+
         this.stockExchangeDAO.saveNew(se1a);
         this.stockExchangeDAO.saveNew(se1b);
+
+        //MyStockEntity s1Relu = this.stockDAO.findById("S1111");
+        MyStockEntity s1Relu = this.stockDAO.findByIdWithExchanges("S1111");
+        log.info("s1Relu="+s1Relu);
+        for(MyStockExchangeEntity e : s1Relu.getExchanges()){
+            log.info("\t e="+e.toString()); //avec ou sans lazy...Exception
+        }
+
 
         //créer et sauvegarder une deuxième action (ex: Abc)
         MyStockEntity s2 = new MyStockEntity("Abc","S2222","FR0000120351",642.25);
@@ -51,12 +63,17 @@ public class TestMyStockExchangeDAO {
         this.stockExchangeDAO.saveNew(se2a);
         this.stockExchangeDAO.saveNew(se2b);
 
+
+
+        /*
         //appeler une méthode récupérant tous les échanges associés à la première action
         List<MyStockExchangeEntity> exchangesS1= this.stockExchangeDAO.findExchangesByStockId(s1.getSymbol());
         //afficher le résultat via log.info
         log.info("exchangesS1="+exchangesS1);
         //verifier la taille (==2) via un assertTrue(...) approprié
         assertTrue(exchangesS1.size()==2);
+
+         */
     }
 
 

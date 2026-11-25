@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //à compléter en Tp avec @Entity , @Table , @Id , @Column , ...
@@ -14,22 +15,30 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name="my_stock")
+@NamedEntityGraph(name = "entity-graph-stock-exchanges",
+        attributeNodes = {
+                @NamedAttributeNode(value="exchanges")/*,
+                @NamedAttributeNode(value="autre_choses"),*/
+        }
+)
 public class MyStockEntity {
 
     @Column(length=24)
     private String isin ;//code (ex: FR0000120321) (ISIN: (International Securities Identification Number)
 
-    @Column(length=128)//255 par defaut
+    @Column(length = 128) //255 par defaut
     private String name; //ex: L'Oréal S.A
 
     @Id
+    @Column(length = 64)
     private String symbol;//ex: OR.PA
 
     @Column(name="current_quote")
     private double currentQuote; //ex: 348.25 le 7avril2026 à 17h30
 
-    @OneToMany(mappedBy = "stock")
-    private List<MyStockExchangeEntity> exchanges;
+
+    @OneToMany(mappedBy = "stock" , cascade = { CascadeType.PERSIST , CascadeType.MERGE})
+    private List<MyStockExchangeEntity> exchanges = new ArrayList<>();
 
     private Long number;
 

@@ -3,6 +3,8 @@ package tp.market.persistence.my_dao;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import tp.market.persistence.entity.StockEntity;
 import tp.market.persistence.jpa.MyJpaUtil;
 import tp.market.persistence.my_entity.MyStockEntity;
@@ -13,8 +15,11 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 @Slf4j
 public class TestMyStockDAO {
+
+    //public static Logger log = LoggerFactory.getLogger(TestMyStockDAO.class);
 
     private static MyStockDAO stockDAO;
 
@@ -31,7 +36,7 @@ public class TestMyStockDAO {
         log.info("testFindAllStock");
         //appeler .findAll() sur le dao
         List<MyStockEntity> listeActions =  this.stockDAO.findAll();
-        log.info("listeActions = " + listeActions);
+        log.debug("listeActions = " + listeActions);
         //afficher le résultat via log.info()
         assertTrue(listeActions.size()>=40);
         //vérifier via assertTrue(...) que la taille de la liste est au moins égale à 40 (taille de ce qui est initialisé par  MyDatabaseUtil.reInitDataSet(...))
