@@ -1,6 +1,7 @@
 package tp.market.persistence.my_dao;
 
 import jakarta.persistence.EntityGraph;
+import jakarta.persistence.criteria.*;
 import tp.market.persistence.generic.GenericDaoJpa;
 import tp.market.persistence.jpa.MyJpaUtil;
 import tp.market.persistence.my_entity.MyStockEntity;
@@ -24,6 +25,22 @@ public class MyStockExchangeDaoJpa extends GenericDaoJpa<MyStockExchangeEntity,L
                             .getResultList();
                 }
         );
+    }
+
+    @Override
+    public List<MyStockExchangeEntity> findByCriteriaStockId(String stockId) {
+        return (List<MyStockExchangeEntity>) MyJpaUtil.execInTransaction(entityManager -> {
+            CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+            CriteriaQuery<MyStockExchangeEntity> criteriaQuery = cb.createQuery(MyStockExchangeEntity.class);
+            Root<MyStockEntity> stockRoot = criteriaQuery.from(MyStockEntity.class);
+            Predicate pEqStockSymbol = cb.equal(stockRoot.get("symbol") , stockId);
+            Join<MyStockEntity, MyStockExchangeEntity> joinExchangesOfStock = stockRoot.join("exchanges");
+            criteriaQuery.select(joinExchangesOfStock);
+            criteriaQuery.where(pEqStockSymbol);
+            return entityManager.createQuery(criteriaQuery).getResultList();
+           }
+        );
+
     }
 
 
