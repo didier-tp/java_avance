@@ -10,6 +10,7 @@ import tp.market.persistence.entity.StockExchangeEntity;
 import tp.market.persistence.jpa.MyJpaUtil;
 import tp.market.persistence.my_entity.MyStockEntity;
 import tp.market.persistence.my_entity.MyStockExchangeEntity;
+import tp.market.persistence.my_entity.aggregation.MyExchangeEssential;
 
 import java.util.List;
 
@@ -69,7 +70,8 @@ public class TestMyStockExchangeDAO {
 
         //appeler une méthode récupérant tous les échanges associés à la première action
         //List<MyStockExchangeEntity> exchangesS1= this.stockExchangeDAO.findExchangesByStockId(s1.getSymbol());
-        List<MyStockExchangeEntity> exchangesS1= this.stockExchangeDAO.findByCriteriaStockId(s1.getSymbol());
+        //List<MyStockExchangeEntity> exchangesS1= this.stockExchangeDAO.findByCriteriaStockId(s1.getSymbol());
+        List<MyExchangeEssential> exchangesS1= this.stockExchangeDAO.findExchangeEssentialListByStockId(s1.getSymbol());
         //afficher le résultat via log.info
         log.info("exchangesS1="+exchangesS1);
         //verifier la taille (==2) via un assertTrue(...) approprié

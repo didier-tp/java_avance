@@ -43,6 +43,18 @@ public class MyStockExchangeDaoJpa extends GenericDaoJpa<MyStockExchangeEntity,L
 
     }
 
+    @Override
+    public List<MyExchangeEssential> findExchangeEssentialListByStockId(String stockId) {
+        return (List<MyExchangeEssential>) MyJpaUtil.execInTransaction(entityManager -> {
+                    return entityManager.createQuery(
+                                    "SELECT new tp.market.persistence.my_entity.aggregation.MyExchangeEssential(se.stock.id,se.price,se.quantity) " +
+                                            " FROM MyStockExchangeEntity se WHERE se.stock.symbol = :stockIdParam", MyExchangeEssential.class)
+                            .setParameter("stockIdParam", stockId)
+                            .getResultList();
+                }
+        );
+    }
+
 
     //plus méthodes complémentaires des futurs Tps ...
 }
