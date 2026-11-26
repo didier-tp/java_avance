@@ -17,14 +17,25 @@ public class TestDtoAsJson {
         assertNotNull(c1JsonString);
         log.info("c1JsonString="+c1JsonString);
         assertThatJson(c1JsonString)
-                .when(Option.IGNORING_EXTRA_FIELDS)
+                .when(Option.IGNORING_EXTRA_FIELDS) //pour ok même si pas de "  "fillColor"  ou autre champ conidéré facultatif
                 .isEqualTo("""
+                      {
+                      "yc": 40,
+                      "xc": 50,
+                       "radius" : 60
+                     }""");
+
+    }
+}
+
+/*
+
+.isEqualTo("""
                       {
                       "xc": 50,
                       "yc": 40,
                        "radius" : 60,
                        "fillColor" : "red"
                      }""");
-
-    }
-}
+                     ok
+ */
