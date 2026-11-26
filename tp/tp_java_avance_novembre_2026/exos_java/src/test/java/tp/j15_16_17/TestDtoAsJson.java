@@ -38,4 +38,16 @@ public class TestDtoAsJson {
                        "fillColor" : "red"
                      }""");
                      ok
+
+          =====
+
+          avec spring (équivalent prédéfini):
+
+          assertThat(...)
+                .isLenientlyEqualTo("""
+                 [ {"numero":1,"label":"compteA","solde":40.0 },
+                   {"numero":2,"label":"compteB","solde":90.0 }
+                  ]
+                """);
+
  */
