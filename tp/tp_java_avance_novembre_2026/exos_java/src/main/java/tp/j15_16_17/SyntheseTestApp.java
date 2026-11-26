@@ -46,8 +46,23 @@ public class SyntheseTestApp {
 
 			Object resTransformation = transformationFunction.apply(fig);
 			System.out.println("resTransformation="+resTransformation);
-
+			System.out.println("\t perimetre=" + perimetreOfRecord(resTransformation));
 		}
+	}
+
+	//NB: dans ce projet de niveau java21 , lineColor inutilisé
+	//NB: dans autre projet de niveau java25 , unamed variable _
+	public double perimetreOfRecord(Object o){
+		double perimetre= switch(o){
+			case Dto.LineRecord(int x1,int y1,int x2,int y2,String lineColor) ->
+				Math.sqrt(Math.pow(x2-x1,2)+Math.pow(y2-y1,2));
+			case Dto.RectangleRecord(int x1,int y1,int largeur,int hauteur,String fillColor) ->
+					2 * (largeur + hauteur);
+			case Dto.CircleRecord(int xc,int yc,int radius,String fillColor) ->
+					2 * Math.PI * radius;
+			default -> 0;
+		};
+		return perimetre;
 	}
 
 	private void autresExperimentationsSelonInspirationDuMoment() {
