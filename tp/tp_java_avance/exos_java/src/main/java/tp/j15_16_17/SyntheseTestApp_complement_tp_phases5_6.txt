@@ -1,0 +1,27 @@
+Phase5 :
+=======
+ajouter méthode  prenant en entrée un object quelconque (un des record Dto.LineRecord ou Dto.RectangleRecord ou Dto.CircleCircleRecord)
+et retournant le pémimètre/longueur en utilisant au maximum les nouvelles syntaxes de java21:
+  - destructuration
+  - switch sur instance of
+appliquer cette méthode en boucle si possible
+
+Phase6:
+======
+Ajouter dans le projet des dépendances maven "assertj-core" et "json-unit-assertj"
+de manière à écrire un petit test unitaire
+testant une bonne valeur pour le résultat "json" de la méthode CircleRecord.toString()
+
+<dependency>
+    <groupId>org.assertj</groupId>
+    <artifactId>assertj-core</artifactId>
+    <version>3.27.7</version>
+    <scope>test</scope>
+</dependency>
+
+<dependency>
+    <groupId>net.javacrumbs.json-unit</groupId>
+    <artifactId>json-unit-assertj</artifactId>
+    <version>6.4.1</version>
+    <scope>test</scope>
+</dependency>

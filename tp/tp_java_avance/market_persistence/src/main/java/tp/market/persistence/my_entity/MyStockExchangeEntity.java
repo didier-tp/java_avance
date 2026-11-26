@@ -12,18 +12,15 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-@Table(name="my_stock_exchange")
+//...
 public class MyStockExchangeEntity {
 
     //... //auto_incr in database
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //...
     private Long id;
 
    //lien n-1 , ...
-    @ManyToOne
-    @JoinColumn(name="stock_id")
+//...
     private MyStockEntity stock;
 
     private double price;

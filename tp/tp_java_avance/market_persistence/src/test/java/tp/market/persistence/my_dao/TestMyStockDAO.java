@@ -30,10 +30,9 @@ public class TestMyStockDAO {
         //à coder en TP
         log.info("testFindAllStock");
         //appeler .findAll() sur le dao
-        List<MyStockEntity> listeActions =  this.stockDAO.findAll();
-        log.info("listeActions = " + listeActions);
+        //...
         //afficher le résultat via log.info()
-        assertTrue(listeActions.size()>=40);
+
         //vérifier via assertTrue(...) que la taille de la liste est au moins égale à 40 (taille de ce qui est initialisé par  MyDatabaseUtil.reInitDataSet(...))
     }
 
@@ -47,22 +46,7 @@ public class TestMyStockDAO {
         //relire et vérifier les mises à jour
         //supprimer l'action
         //vérifier la suppression
-        String pk="XYZ.PA";
-        stockDAO.saveNew(new MyStockEntity("Xyz" , pk , "FR1234567890" , 2.02 ));
-        MyStockEntity sRelu = stockDAO.findById(pk);
-        //MyStockEntity sRelu = stockDAO.findByIsin("FR1234567890"); //efficient search with index on unique isin (not pk)
-        log.info("sRelu="+sRelu);
-        assertEquals("Xyz",sRelu.getName());
-        assertEquals(2.02,sRelu.getCurrentQuote(),0.00001);
-        sRelu.setName("Xyz2"); sRelu.setCurrentQuote(4.04);
-        stockDAO.update(sRelu);
-        MyStockEntity sRelu2 = stockDAO.findById(pk);
-        log.info("sRelu2="+sRelu2);
-        assertEquals("Xyz2",sRelu2.getName());
-        assertEquals(4.04,sRelu2.getCurrentQuote(),0.00001);
-        stockDAO.deleteById(pk);
-        MyStockEntity sRelu3 = stockDAO.findById(pk);
-        assertNull(sRelu3);
+
     }
 
 

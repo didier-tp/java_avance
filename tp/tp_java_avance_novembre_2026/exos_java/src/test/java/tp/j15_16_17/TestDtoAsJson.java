@@ -5,6 +5,7 @@ import net.javacrumbs.jsonunit.core.Option;
 import org.junit.jupiter.api.Test;
 
 import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @Slf4j
@@ -16,6 +17,16 @@ public class TestDtoAsJson {
         String c1JsonString = c1.toString();
         assertNotNull(c1JsonString);
         log.info("c1JsonString="+c1JsonString);
+        /*
+        assertEquals("""
+                {
+                   "xc" : 50,
+                   "yc" : 40,
+                   "radius" : 60,
+                   "fillColor" : "red"
+                 }""",c1JsonString);
+                 */
+
         assertThatJson(c1JsonString)
                 .when(Option.IGNORING_EXTRA_FIELDS) //pour ok même si pas de "  "fillColor"  ou autre champ conidéré facultatif
                 .isEqualTo("""
