@@ -1,6 +1,8 @@
 package tp.langage.flow;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
@@ -9,7 +11,9 @@ import java.util.concurrent.SubmissionPublisher;
 public class JsonProcessor extends SubmissionPublisher<Object> implements Subscriber<Object> {
     private Subscription subscription;
     
-    private static ObjectMapper jacksonObjectMapper = new ObjectMapper();
+    private static JsonMapper jacksonObjectMapper =JsonMapper.builder()
+            .enable(SerializationFeature.INDENT_OUTPUT)
+            .build();
     
     private Class extractClass;
     

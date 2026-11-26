@@ -1,6 +1,7 @@
 package tp.util;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 import tp.data.Product;
 
 import java.nio.charset.StandardCharsets;
@@ -51,7 +52,9 @@ public class MyFileConsumer {
 		String fileContent = myFileConsumer.extractNewFileContentIfExists().orElse(null);
 		System.out.println("fileContent="+fileContent);
 		
-		ObjectMapper jacksonObjectMapper = new ObjectMapper();
+		JsonMapper jacksonObjectMapper = JsonMapper.builder()
+				.enable(SerializationFeature.INDENT_OUTPUT)
+				.build();
 		//jacksonObjectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		if(fileContent!=null) {
 			try {

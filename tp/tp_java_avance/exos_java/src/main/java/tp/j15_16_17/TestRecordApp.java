@@ -1,7 +1,9 @@
 package tp.j15_16_17;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 public class TestRecordApp {
 
@@ -69,14 +71,18 @@ public class TestRecordApp {
 		String a1AsJsonString =a1.toJsonString();
 		System.out.println("a1="+a1AsJsonString);
 		//et dans le sens inverse jsonString --> record a2:
-		try {
-			ObjectMapper jacksonObjectMapper = new ObjectMapper();
-			AddressV1 a2 = jacksonObjectMapper.readValue(a1AsJsonString,AddressV1.class);
-			System.out.println("via jackson, a2 (clone de a1)="+a2);
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-	}
+
+        try {
+            JsonMapper jsonMapper = JsonMapper.builder()
+                    .enable(SerializationFeature.INDENT_OUTPUT)
+                    .build();
+            AddressV1 a2 = jsonMapper.readValue(a1AsJsonString,AddressV1.class);
+            System.out.println("via jackson, a2 (clone de a1)="+a2);
+        } catch (JacksonException e) {
+            e.printStackTrace();
+        }
+
+    }
 	
 	//V2 avec compatibilité avec api jackson-databind (souvent utilisé par JEE , Spring, ...)
 	//pratique pour définition de DTO/VO (à la volée)
@@ -88,10 +94,12 @@ public class TestRecordApp {
 		AddressV2 a1 = new AddressV2(12,"rueElle","75000" ,"Paris");
 		System.out.println("a1="+a1.toString());
 		try {
-			ObjectMapper jacksonObjectMapper = new ObjectMapper();
-			String a1JsonString = jacksonObjectMapper.writeValueAsString(a1);
+			JsonMapper jsonMapper = JsonMapper.builder()
+					.enable(SerializationFeature.INDENT_OUTPUT)
+					.build();
+			String a1JsonString = jsonMapper.writeValueAsString(a1);
 			System.out.println("via jackson, a1JsonString="+a1JsonString);
-		} catch (JsonProcessingException e) {
+		}catch (JacksonException e) {
 			e.printStackTrace();
 		}
 	}
@@ -102,15 +110,17 @@ public class TestRecordApp {
 		System.out.println("\np1Dto="+p1Dto.toString());
 		
 		try {
-			ObjectMapper jacksonObjectMapper = new ObjectMapper();
-			String p1JsonString = jacksonObjectMapper.writeValueAsString(p1Dto);
-			System.out.println("via jackson, p1JsonString="+p1JsonString);
+			JsonMapper jsonMapper = JsonMapper.builder()
+					.enable(SerializationFeature.INDENT_OUTPUT)
+					.build();
+			String p1JsonString = jsonMapper.writeValueAsString(p1Dto);
+			System.out.println("via jackson, p1JsonString=" + p1JsonString);
 			//-----
-			Dto.Person p1BisDto =jacksonObjectMapper.readValue(p1JsonString,Dto.Person.class);
-			System.out.println("via jackson, p1BisDto=clone de p1Dto="+p1BisDto.toString());
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
+			Dto.Person p1BisDto = jsonMapper.readValue(p1JsonString, Dto.Person.class);
+			System.out.println("via jackson, p1BisDto=clone de p1Dto=" + p1BisDto.toString());
+		}catch (JacksonException e) {
+				e.printStackTrace();
+			}
 	}
 	
     
