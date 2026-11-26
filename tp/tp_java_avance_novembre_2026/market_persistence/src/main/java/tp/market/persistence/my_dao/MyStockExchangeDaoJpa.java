@@ -28,6 +28,16 @@ public class MyStockExchangeDaoJpa extends GenericDaoJpa<MyStockExchangeEntity,L
     }
 
     @Override
+    public List<MyStockExchangeEntity> badFindByStockIdWithSqlInjectionProblem(String stockId) {
+        return (List<MyStockExchangeEntity>) MyJpaUtil.execInTransaction(entityManager -> {
+                    return entityManager.createQuery(
+                                    "SELECT se FROM MyStockExchangeEntity se WHERE se.stock.symbol = '" + stockId + "'", MyStockExchangeEntity.class)
+                            .getResultList();
+                }
+        );
+    }
+
+    @Override
     public List<MyStockExchangeEntity> findByCriteriaStockId(String stockId) {
         return (List<MyStockExchangeEntity>) MyJpaUtil.execInTransaction(entityManager -> {
             CriteriaBuilder cb = entityManager.getCriteriaBuilder();

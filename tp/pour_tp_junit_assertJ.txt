@@ -1,0 +1,49 @@
+        spécifique spring :
+	----------------      
+	assertThat(...)
+                .isLenientlyEqualTo("""
+                 [ {"numero":1,"label":"compteA","solde":40.0 },
+                   {"numero":2,"label":"compteB","solde":90.0 }
+                  ]
+                """);
+
+
+===========
+assertJ-standard:
+--------
+<dependency>
+    <groupId>org.assertj</groupId>
+    <artifactId>assertj-core</artifactId>
+    <version>3.27.7</version>
+    <scope>test</scope>
+</dependency>
+
+
+--------
+assertThat(actualObject)
+    .usingRecursiveComparison()
+    .ignoringFields("id", "creationDate") // Permet d'être tolérant sur certains champs
+    .isEqualTo(expectedObject);
+
+
+complement pour assertJ:
+----------------------
+<dependency>
+    <groupId>net.javacrumbs.json-unit</groupId>
+    <artifactId>json-unit-assertj</artifactId>
+    <version>6.4.1</version>
+    <scope>test</scope>
+</dependency>
+
+import static net.javacrumbs.jsonunit.assertj.JsonAssertions.assertThatJson;
+import net.javacrumbs.jsonunit.core.Option;
+
+assertThatJson(actualJson)
+    .when(Option.IGNORING_ARRAY_ORDER, Option.IGNORING_EXTRA_FIELDS)
+    .inPath("$.data")
+    .isEqualTo("""
+        {
+          "status": "ok",
+          "items": [1, 2, 3]
+        }
+        """);

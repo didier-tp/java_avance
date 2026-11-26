@@ -53,7 +53,7 @@ public class MyStockExchangeEntity {
     public String toString() {
         return "MyStockExchangeEntity{" +
                 "id=" + id +
-                ", stock=" + stock +
+               /* ", stock=" + stock +*/
                 ", price=" + price +
                 ", quantity=" + quantity +
                 ", buyerId='" + buyerId + '\'' +

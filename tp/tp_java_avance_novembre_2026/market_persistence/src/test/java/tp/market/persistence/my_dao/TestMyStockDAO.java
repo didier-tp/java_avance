@@ -1,5 +1,7 @@
 package tp.market.persistence.my_dao;
 
+import jakarta.persistence.Cache;
+import jakarta.persistence.EntityManagerFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -20,13 +22,14 @@ import static org.junit.jupiter.api.Assertions.*;
 public class TestMyStockDAO {
 
     //public static Logger log = LoggerFactory.getLogger(TestMyStockDAO.class);
-
+    private static EntityManagerFactory emf;
     private static MyStockDAO stockDAO;
 
     @BeforeAll
     public static void initStockDao(){
         MyJpaUtil.setHbm2ddlAuto(true);
         stockDAO=new MyStockDaoJpa();
+        emf=MyJpaUtil.entityManagerFactory();
         MyDatabaseUtil.reInitDataSet(stockDAO); //reinit database content with cac40 stocks
     }
 
@@ -68,6 +71,25 @@ public class TestMyStockDAO {
         stockDAO.deleteById(pk);
         MyStockEntity sRelu3 = stockDAO.findById(pk);
         assertNull(sRelu3);
+    }
+
+    @Test
+    public void testSaveAndFindWithCache(){
+        String pk="sxx.PA";
+        stockDAO.saveNew(new MyStockEntity("Sxx" , pk , "FR12367890" , 3.03 ));
+        String pk2="syy.PA";
+        stockDAO.saveNew(new MyStockEntity("Syy" , pk2 , "FR1236780" , 4.03 ));
+        long t1 = System.currentTimeMillis();
+        MyStockEntity sRelu = stockDAO.findById(pk);
+        long t2 = System.currentTimeMillis();
+        Cache cache = emf.getCache();//2nd Level cache (shared by all users/threads/sessions/entityManager)
+        boolean wasCached = cache.contains(MyStockEntity.class, pk);
+        log.info("findById execution time (with or woithout cache)="+(t2-t1));
+         //ex: 12ms with cache , 35ms without cache
+        log.info("sRelu="+sRelu);
+        log.info("wasCached="+wasCached);
+        assertEquals("Sxx",sRelu.getName());
+        //assertTrue(wasCached);
     }
 
 

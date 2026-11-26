@@ -1,0 +1,4 @@
+https://geo.api.gouv.fr/communes?codePostal=27950
+https://geo.api.gouv.fr/communes?codePostal=76000
+========
+http://api.zippopotam.us/fr/76000

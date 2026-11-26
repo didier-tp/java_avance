@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +22,8 @@ import java.util.List;
                 @NamedAttributeNode(value="autre_choses"),*/
         }
 )
+@Cacheable
+@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class MyStockEntity {
 
     @Column(length=24)
