@@ -28,7 +28,7 @@ public class MyBasicMarketServerAppV2 {
 
         BasicMarketExecution.INSTANCE.setOrderExecutorTask(new OrderExecutorTaskV1());
         BasicMarketExecution.INSTANCE.setRefreshExchangesTask(new RefreshExchangesTaskV1());
-        BasicMarketExecution.INSTANCE.executeRegisteredTasks(BasicMarketExecution.ONE_MINUTE_MS);
+        BasicMarketExecution.INSTANCE.executeRegisteredTasks(BasicMarketExecution.ONE_MINUTE_MS*10);
     }
 
 

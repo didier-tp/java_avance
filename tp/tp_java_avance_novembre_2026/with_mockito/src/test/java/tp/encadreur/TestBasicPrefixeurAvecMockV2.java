@@ -16,21 +16,21 @@ import org.slf4j.LoggerFactory;
 //V2 avec Mockito avec annotations
 
 //@RunWith(MockitoJUnitRunner.class) //for JUnit 4
-//@ExtendWith(MockitoExtension.class) //or MockitoAnnotations.openMocks(this) in @BeforeEach for JUnit 5
+@ExtendWith(MockitoExtension.class) //or MockitoAnnotations.openMocks(this) in @BeforeEach for JUnit 5
 public class TestBasicPrefixeurAvecMockV2 {
 	
 	private static Logger logger = LoggerFactory.getLogger(TestBasicPrefixeurAvecMockV2.class);
 	
 	@InjectMocks
 	private BasicPrefixeur prefixeur; //à tester
-	
-	
+
+
 	@Mock
 	private CustomSeparator customSeparatorMock;
 	
 	@BeforeEach
 	public void initPrefixeurWithMocks() {
-		MockitoAnnotations.openMocks(this);
+		//MockitoAnnotations.openMocks(this);
 	}
 	
 	@Test
@@ -39,6 +39,7 @@ public class TestBasicPrefixeurAvecMockV2 {
 		String prefixe="jaime";
 		String expectedRes="jaime__junit";
 		Mockito.when(customSeparatorMock.getSeparator()).thenReturn("__");
+		//Mockito.when(customSeparatorMock.getSeparatorLength()).thenReturn(2);
 		
 		
 		String sRes = prefixeur.prefixer(s, prefixe);

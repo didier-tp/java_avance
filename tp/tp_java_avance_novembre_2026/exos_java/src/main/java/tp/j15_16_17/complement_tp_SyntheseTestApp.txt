@@ -1,0 +1,13 @@
+Phase5 :
+=======
+ajouter méthode  prenant en entrée un object quelconque (un des record Dto.LineRecord ou Dto.RectangleRecord ou Dto.CircleCircleRecord)
+et retournant le prémimètre en utilisant au maximum les nouvelles syntaxes de java21:
+  - destructuration
+  - switch sur instance of
+appliquer cette méthode en boucle si possible
+
+Phase6:
+======
+Ajouter dans le projet des dépendances maven "assertj-core" et "json-unit-assertj"
+de manière à écrire un petit test unitaire
+testant une bonne valeur pour le résultat "json" de la méthode CircleRecord.toString()
