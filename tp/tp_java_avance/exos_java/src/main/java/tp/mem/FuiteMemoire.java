@@ -15,8 +15,8 @@ public class FuiteMemoire {
     }
 
     public static void xyz(){
-        byte[] obj  = new byte[1024 * 1024];
-        System.out.println("taille de obj="+obj.length);
+        BigObject obj  = new BigObject();
+        System.out.println("taille de obj="+obj.length());
         try {
             Thread.sleep(200);
         } catch (InterruptedException e) {
@@ -28,7 +28,7 @@ public class FuiteMemoire {
 
     public static void memoryLeakExample() {
         for (int i = 0; i < 1000; i++) {
-            Object obj = new byte[1024 * 1024];
+            Object obj = new BigObject();
             try {
                 Thread.sleep(1000);
             } catch (InterruptedException e) {
